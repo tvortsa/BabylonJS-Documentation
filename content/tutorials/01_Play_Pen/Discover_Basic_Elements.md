@@ -142,11 +142,11 @@ var lines = BABYLON.Mesh.CreateLines("lines", [
 ```javascript
 var dashedlines = BABYLON.Mesh.CreateDashedLines("dashedLines", [v1, v2, ... vn], dashSize, gapSize, dashNb, scene);
 ```
-Параметры : name, [array of Vectors3], dashSize, gapSize, dashNumber, scene.    
-As for Lines, a line along the vectors3 will be displayed in space. It will try to set _dashNumber_ strokes on this line depending on the length of each segment between two successive vectors3.    
-_dashSize_ and _gapSize_ are relative to each other dash and gap sizes within these strokes.   
+Параметры : имя, [массив Vectors3], dashSize, gapSize, dashNumber, scene.    
+Как и Lines, линия вдоль vectors3 появится в пространстве. Она попытается установить _dashNumber_ штриха на этой линии в зависимости по длине каждого сегмента между двумя последовательными vectors3.    
+_dashSize_ и _gapSize_ соответственно размеры dash и gap для этого штриха.   
 
-You might also be interested in our new [LinesSystem](http://doc.babylonjs.com/tutorials/Mesh_CreateXXX_Methods_With_Options_Parameter#linesystem).
+Вам также може понравится наша новая [LinesSystem](http://doc.babylonjs.com/tutorials/Mesh_CreateXXX_Methods_With_Options_Parameter#linesystem).
 
 
 * **Создание Ribbon**
@@ -170,13 +170,13 @@ var ribbon = BABYLON.Mesh.CreateRibbon("ribbon", [path1, path2, ..., pathn], fal
 Параметры: имя, pathArray, closeArray, closePath, offset, scene, updatable? (if the mesh must be modified later)  and the optional side orientation (see below).
 
 
-  * name : a string, the name you want to give to your shape,
-  * pathArray : an array populated with paths. Paths are also arrays, populated with series of successive _Vector3_. You need at least one path to construct a ribbon and each path must contain at least four _Vector3_,
-  * closeArray : boolean, if true an extra set of triangles is constructed between the last path and the first path of _pathArray_,
-  * closePath : boolean, if true the last point of each path of _pathArray_ is joined to the first point of this path,
-  * offset : integer (default half the _path_ size) mandatory only if the _pathArray_ contents only one path. The ribbon will be constructed joining each i-th point of the single path to the i+offset-th point. It is ignored if _pathArray_ has more than one path,
-  * scene : the current scene object,
-  * updatable : boolean, if the ribbon should allow updating later,
+  * name : строка, имя которое вы хотите дать вашему объекту,
+  * pathArray : массив, заполненный путями. Пути это тоже массивы, заполненные серией последовательных _Vector3_. Вам нужен хотя бы один путь для создания ленты, и каждый путь должен содержать не менее четырех _Vector3_,
+  * closeArray : boolean, если true между последним путем и первым путем создается дополнительный набор треугольников _pathArray_,
+  * closePath : boolean, если true  последняя точка каждого пути массива _pathArray_ соединяется с первой точкой этого пути,
+  * offset : integer (по-умолчанию половина размера _path_) обязательно, только если _pathArray_ содержит только один path. Ribbon  будет построена, соединяющая каждую i-ю точку единственного пути с i + смещенной точкой. It is ignored if _pathArray_ has more than one path,
+  * scene : текущий объект-сцена,
+  * updatable : boolean, если ribbon should allow updating later,
   * sideOrientation : the wanted side-orientation (BABYLON.Mesh.FRONTSIDE / BACKSIDE / DOUBLESIDE / DEFAULT).
 
 The last two parameters can be omitted if you just need the default behavior :
@@ -192,7 +192,7 @@ I you need more details about how to deal with this method, you would probably r
 var tube = BABYLON.Mesh.CreateTube("tube", [V1, V2, ..., Vn], radius, tesselation, radiusFunction, cap, scene, false, BABYLON.Mesh.DEFAULTSIDE);
 
 ```
-Parameters are : name, path, radius, tesselation, optional radiusFunction, cap, scene, updatable, sideOrientation.
+Параметры : name, path, radius, tesselation, optional radiusFunction, cap, scene, updatable, sideOrientation.
 
   * name : string, the name of the tube mesh,
   * path : an array of successive Vector3, at least two Vector3,
@@ -211,27 +211,27 @@ The tube can also be used as a [**Parametric Shapes**](http://doc.babylonjs.com/
 
 
 
-#### Updatable
-This parameter, present in each mesh creation method... tells if the mesh can be updated after it is created.  
-If false (default value), the mesh data are passed only once to the GPU.  
-If true, the mesh data may be recomputed and passed to the GPU at each frame refresh.  
+#### Updatable (обновляемый)
+Этот параметр, присутствует в конструкторе каждого объекта - фигуры... указывает, может ли сетка обновляться после ее создания.  
+Если false (по-умолчанию), данные сетки передаются только один раз в GPU.  
+Если true, данные сетки могут быть пересчитаны и переданы в GPU при каждом обновлении фрейма.  
 
 #### Side Orientation
-When a mesh is created, an optional side orientation is given to it.  
-The side orientation is used to give visibility and/or light reflection to each side of the mesh.  
-There are four possible values for this parameter :  
+Когда сетка создана, ему предоставляется дополнительная боковая ориентация.  
+Side orientation используется для обеспечения видимости и / или отражения света на каждой стороне сетки.  
+Существует четыре возможных значения для этого параметра :  
 
   * BABYLON.Mesh.FRONTSIDE,
   * BABYLON.Mesh.BACKSIDE,
   * BABYLON.Mesh.DOUBLESIDE,
-  * BABYLON.Mesh.DEFAULT which is the default value and equals FRONTSIDE currently.
+  * BABYLON.Mesh.DEFAULT который является значением по умолчанию и равен FRONTSIDE.
 
-This parameter is optional. If not given, the DEFAULT value is set.
+Этот параметр является необязательным. If not given, the DEFAULT value is set.
 
-*(We assume the backFaceCulling is enabled by default)*  
+*(Мы предполагаем что backFaceCulling включен по-умолчанию)*  
 
-For instance, imagine you create a basic shape like a box, a sphere or a plane, and you don't give it a material.   
-If you go behind the plane or inside the box or the sphere, you will notice that the faces aren't visible any longer : Babylon.js mesh are often constructed with the default side orientation _FRONTSIDE_. This means that each side only has a front view.  
+Например, представьте, что вы создаете базовую форму, такую как коробка, шар или плоскость, и вы не даете ей материала.   
+Если вы находитесь позади плоскости или внутри коробки или сферы, вы заметите, что поверхности больше не видны : Babylon.js mesh часто создаются с ориентацией по умолчанию _FRONTSIDE_. Это означает, что каждая сторона имеет только вид спереди.  
 Test it :  https://www.babylonjs-playground.com/#14RNAU#4  
 
 If you apply a test material to your mesh, set _material.backFaceCulling = false;_, and light it up, you will notice that the back (or internal) face... is now visible, but it doesn't reflect the light.  Same reason : the default side orientation is still _FRONTSIDE_.  
@@ -256,7 +256,7 @@ Because this value creates twice the vertices of a frontside mesh. In other term
 
 
 ### Еще базовые элементы - Grounds
-Up to this point, we have been talking about basic elements from our [**Playground Demo Scene 02**]( https://www.babylonjs-playground.com/?2), but a few important mesh shapes (basic elements) are not included in that demo scene.  They are each ways of making 'ground' in Babylon.js.  Let's take a look: 
+До этого момента, we have been talking about basic elements from our [**Playground Demo Scene 02**]( https://www.babylonjs-playground.com/?2), but a few important mesh shapes (basic elements) are not included in that demo scene.  They are each ways of making 'ground' in Babylon.js.  Let's take a look: 
 
 * **Создание Ground**
 
@@ -298,8 +298,8 @@ Parameters are: name, xmin, zmin, xmax, zmax, subdivisions = the number of tiles
 
 Kostar111 was also kind enough to give us a fine tutorial about how to use tiled grounds. [**Click right here**](http://makina-corpus.com/blog/metier/how-to-use-multimaterials-with-a-tiled-ground-in-babylonjs) to view it. At that link, Kostar111 thoroughly explains how the tiled ground works, and also provides some Babylon.js Playground scenes that nicely demonstrate some of its many uses.
 
-## Wrapping Up ##
-And that’s it! Now you have seen all of our basic elements, and some ways to use them. Keep watching this area of the tutorial for new basic elements, as they are being added quite quickly : you'll find the updated list with all parameter explanations [**in this section**](http://doc.babylonjs.com/tutorials/Mesh_CreateXXX_Methods_With_Options_Parameter). 
+## Завершение ##
+Это все! Теперь вы видите все ваши базовые элементы, and some ways to use them. Keep watching this area of the tutorial for new basic elements, as they are being added quite quickly : you'll find the updated list with all parameter explanations [**in this section**](http://doc.babylonjs.com/tutorials/Mesh_CreateXXX_Methods_With_Options_Parameter). 
 Feel free to imagine a few of your own basic element ideas, and present them on the forum. Help us make our list of basic elements grow, if you can.  
 
 ## Next step ##
