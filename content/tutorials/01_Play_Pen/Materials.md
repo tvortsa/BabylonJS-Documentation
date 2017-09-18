@@ -2,16 +2,16 @@
 ID_PAGE: 22051
 PG_TITLE: 04. Materials
 ---
-## Introduction
+## Введение
 
-Now that you can create different basic mesh elements anywhere in the scene, we are going to give those meshes some materials, to define how those mesh look.
+Теперь, когда вы можете создавать различные базовые элементы сетки в любой точке сцены, мы собираемся предоставить этим сеткам некоторые материалы, чтобы определить, как выглядят эти сетки.
 
 ![Elements](/img/tutorials/Materials/04.png)
 
 [**Playground Demo Scene 4 - Materials**](http://www.babylonjs.com/playground/?4)
 
-## How can I do this ?
-We are so adept at making createScene functions that we can do it in our sleep, right? So let's get rolling with an omni-directional PointLight and an orbiting ArcRotateCamera.  After that, we'll start making some basic mesh elements to test our materials upon.
+## Как это сделать ?
+Мы настолько искусны в создании функций createScene, что можем сделать это во сне, не так ли? Итак, давайте прокатиться с всенаправленным PointLight и орбитальной ArcRotateCamera.  После чего, мы начнем создавать некоторые основные элементы сетки, чтобы проверить наши материалы на.
 
 ```javascript
 function createScene() {
@@ -19,84 +19,84 @@ function createScene() {
     var light = new BABYLON.PointLight("Omni", new BABYLON.Vector3(0, 100, 100), scene);
     var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0.8, 100, BABYLON.Vector3.Zero(), scene);
 
-    //Creation of spheres
+    //Создаем сферы
     var sphere1 = BABYLON.Mesh.CreateSphere("Sphere1", 10.0, 6.0, scene);
     var sphere2 = BABYLON.Mesh.CreateSphere("Sphere2", 2.0, 7.0, scene);
     var sphere3 = BABYLON.Mesh.CreateSphere("Sphere3", 10.0, 8.0, scene);
 […]
-    //Positioning the meshes
+    //Позиционируем меши
     sphere1.position.x = -40;
     sphere2.position.x = -30;
 ```
 
-So far, you only have some grey-colored meshes. How drab! To apply a material to them, you will need to create a new material object like this:
+Пока что у вас есть только серая серая сетка. Как страшно! Чтобы применить к ним материал, вам нужно будет создать новый объект материала, подобный этому:
 ```javascript
 var materialSphere1 = new BABYLON.StandardMaterial("texture1", scene);
 ```
 
-And apply this material to the object of your choice, e.g.:
+И применить этот материал к объекту по вашему выбору:
 ```javascript
 sphere1.material = materialSphere1;
 ```
-Or, create and apply all in one step:
+Или, создайте и примените все за один шаг:
 ```javascript
 sphere1.material = new BABYLON.StandardMaterial("texture1", scene);
 ```
 
-“I tested my scene, and …nothing changed…”
+“Я тестирую сцену, и …ничего не изменилось…”
 
-Exactly, because this material is the default one. You have to customize it as you like. You won’t change the mesh itself, but just the material.
+Точняк, потому что это материал по умолчанию. Измените его настройки. You wВы не будете менять меш, только материал.
 
-“So how can I adjust my material to give the perfect look to my object?”
+“Итак, как я могу настроить свой материал, чтобы дать прекрасный взгляд на мой объект?”
 
-That is done by setting the properties on the material.  Let's see what they are:
+Это делается путем установки свойств материала:
 
-* **Transparency** (alpha channel)
+* **Transparency** (прозрачность, альфа-канал)
 
-Alpha compositing and transparency in general can be a bit complex. You might also want to read [the wikipedia page about it](http://en.wikipedia.org/wiki/Alpha_compositing).  You will encounter even more uses for it when you enjoy the BabylonJS particle system, and BabylonJS sprites system. 
+Alpha композитинг и прозрачность в целом могут быть немного сложными. Можете прочесть [в википедии об этом](http://en.wikipedia.org/wiki/Alpha_compositing).  Вы столкнетесь с еще большим количеством применений для него, когда вам понравится система частиц BabylonJS, и BabylonJS sprites system. 
 
- Alpha transparency, written in percent (%), can be applied to a material in this way:
+ Альфа-прозрачность, записывается в процентах (%), и может быть применена к материалу следующим образом:
 ```javascript
 materialSphere1.alpha = 0.5;
 ```
 
 * **Diffuse**
 
-The diffuse is the native color of the object material once it is lit with a light. You can specify a solid color with the ```diffuseColor``` property:
+Diffuse это родной цвет материала когда он освещен. Можно указад сплошной цвет ```diffuseColor``` свойство:
 ```javascript
 materialSphere1.diffuseColor = new BABYLON.Color3(1.0, 0.2, 0.7);
 ```
 
-Or, you can use a texture:
+Или можно использовать текстуру:
 ```javascript
 materialSphere1.diffuseTexture = new BABYLON.Texture("grass.png", scene);
 ```
 
 ![tof](/img/tutorials/Materials/04-1.png)
 
-**More About Textures:** Be sure to use the correct path to your image (relative or absolute path). Supported image formats include JPG, PNG, JPEG, BMP, GIF… (every image format supported by your browser).
+**Подробнее о текстурах:** Обязательно используйте правильный путь к своему изображению (relative or absolute path). Поддерживаются следующие форматы изображений JPG, PNG, JPEG, BMP, GIF… (они же поддерживаются браузером).
 
-If you want to translate (offset) your texture on your mesh, you can use the “uOffset” and “vOffset” properties:
+Если вы хотите перевести (сместить) текстуру на меше, используйте свойства “uOffset” и “vOffset”:
 ```javascript
 materialSphere1.diffuseTexture.uOffset = 1.5;
 materialSphere1.diffuseTexture.vOffset = 0.5;
 ```
-And if you want to repeat/tile an image pattern (e.g. grass texture), you can use the “uScale” and “vScale” properties:
+И если вы хотите repeat/tile шаблон изображения (например текстура троавы), используйте свойства “uScale” и “vScale”:
 ```javascript
 materialSphere1.diffuseTexture.uScale = 5.0;
 materialSphere1.diffuseTexture.vScale = 5.0;
 ```
 
-Remember that (u, v) coordinates refer to the following axis:
+Помните что (u, v) coordinates refer to the following axis:
 
 ![tof](/img/tutorials/crate.jpg)
 
-And if your texture has some alpha, you will need to specify it:
+И если ваша текстура имеет alpha, вы должны указать это:
 ```javascript
 materialSphere1.diffuseTexture.hasAlpha = true;
 ```
 
-In this case, alpha is used for alpha testing. But you may want to use it for alpha blending. To do so, just set ```materialSphere1.useAlphaFromDiffuseTexture```
+Тогда, alpha используется для альфа-тестирования. But you may want to use it for alpha blending. To do so, just set ```materialSphere1.useAlphaFromDiffuseTexture```
 
 All of these texture settings apply to the other StandardMaterial properties as well. (.emissiveTexture, .ambientTexture, .specularTexture)  I will remind you.  Now let's continue talking about the other StandardMaterial properties.
 
