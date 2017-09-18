@@ -2,71 +2,71 @@
 ID_PAGE: 22011
 PG_TITLE: 02. Discover Basic Elements
 ---
-## Introduction
+## Введение
 
-In this tutorial, we are going to learn how to create basic elements using Babylon.js, such as boxes, spheres, and planes.
+В этом уроке, мы узнаем как моздавать базовые элементы используя Babylon.js, такие как боксы, сферы, и плоскости.
 
 ![Elements](http://urbanproductions.com/wingy/babylon/misc/tut02pic.jpg)
 
 [**Playground Demo Scene 2 - Seven basic shapes/mesh**]( https://www.babylonjs-playground.com/?2)
 
-## How can I do this ?
-An easy way to get started using basic elements... is by visiting [**Playground Demo Scene 02**]( https://www.babylonjs-playground.com/?2).  You might wish to use the 'Get .zip' choice on its top menu.  The index.html that you will receive in that zip... contains everything you will need to start making basic elements.  Remember that link, as we will talk more about it.
+## Как это делается ?
+Простейший путь узнать как использовать базовые элементы... это посетить [**Playground Demo Scene 02**]( https://www.babylonjs-playground.com/?2).  Вы можете использовать 'Get .zip' в меню.  Страница index.html которую вы получите в этом zip... содержит все необходимое для создания основных элементов.  Помните что сылка, мы поговорим подробнее об этом.
 
-I'm sure you have already read the  [**Babylon.js Primer**](http://doc.babylonjs.com/generals/A_Babylon.js_Primer) and the  [**previous tutorial**](http://doc.babylonjs.com/tutorials/Creating_a_Basic_Scene), and thus you know how to format scene files.  So, we won't talk about that, here.  We are going to go step by step through [**Playground Demo Scene 02**]( https://www.babylonjs-playground.com/?2).  Open that link in a new tab or window, and then come back here, and we'll get started.
+Я уверен, что вы уже прочитали  [**Babylon.js Primer**](http://doc.babylonjs.com/generals/A_Babylon.js_Primer) и  [**previous tutorial**](http://doc.babylonjs.com/tutorials/Creating_a_Basic_Scene), и, следовательно, вы знаете, как форматировать файлы сцен.  Так что, мы не будем об этом говорить, здесь.  Мы пройдем шаг за шагом [**Playground Demo Scene 02**]( https://www.babylonjs-playground.com/?2).  Откройте эту ссылку в новой вкладке или окне, а затем вернитесь сюда, и мы начнем.
 
-Starting with the box, we create various basic elements, and then position them at the end of the function (to keep them from being atop one another).  Let's talk about each of the basic shapes/meshes.  
+Начиная с коробки, мы создаем различные базовые элементы, а затем позиционируем их в конце функции (чтобы они не были на одном уровне).  Давайте поговорим о каждом из базовых элементов shapes/meshes.  
 
-* **Creation of a Box**
+* **Создание Box**
 ```javascript
 var box = BABYLON.Mesh.CreateBox("box", 6.0, scene, false, BABYLON.Mesh.DEFAULTSIDE);
 ```
-Parameters are: name, size of the box, the scene to attach the mesh, updatable? (if the mesh must be modified later) and the optional side orientation (see below). The last two parameters can be omitted if you just need the default behavior :
+Параметры: имя, размер бокса, сцена в которую прикрепляется меш, обновляемое? (если меш должен модифицироваться впоследствии) и опциональная боковая ориентация (см ниже).Последние два параметра могут быть опущены, если вам просто нужно поведение по умолчанию :
 ```javascript
 var box = BABYLON.Mesh.CreateBox("box", 6.0, scene);
 ```
 
-* **Creation of a Sphere**
+* **Создание Sphere**
 ```javascript
 var sphere = BABYLON.Mesh.CreateSphere("sphere", 10.0, 10.0, scene, false,  BABYLON.Mesh.DEFAULTSIDE);
 ```
-Parameters are: name, number of segments (highly detailed or not), size, scene to attach the mesh, updatable? (if the mesh must be modified later) and the optional side orientation (see below). The last two parameters can be omitted if you just need the default behavior :
+Параметры: имя, количество сегментов (highly detailed or not), размер, сцена в которую прикрепляется меш, обновляемое? (если меш должен модифицироваться впоследствии) и опциональная боковая ориентация (см ниже). Последние два параметра могут быть опущены, если вам просто нужно поведение по умолчанию :
 ```javascript
 var sphere = BABYLON.Mesh.CreateSphere("sphere", 10.0, 10.0, scene);
 ```
 Beware to adapt the number of segments to the size of your mesh ;)
 
-* **Creation of a Plane**
+* **Создание Plane**
 
 ```javascript
 var plane = BABYLON.Mesh.CreatePlane("plane", 10.0, scene, false, BABYLON.Mesh.DEFAULTSIDE);
 ```
 
-Parameters are: name, size, and scene to attach the mesh, updatable? (if the mesh must be modified later) and the optional side orientation (see below). The last two parameters can be omitted if you just need the default behavior :
+Параметры: имя, размер, сцена в которую прикрепляется меш, updatable? (если меш должен модифицироваться впоследствии) и опциональная боковая ориентация (see below). Последние два параметра могут быть опущены, если вам просто нужно поведение по умолчанию :
 ```javascript
 var plane = BABYLON.Mesh.CreatePlane("plane", 10.0, scene);
 ```
-* **Creation of a Disc (or a regular polygon)**
+* **Создание Disc (или regular polygon)**
 ```javascript
 var disc = BABYLON.Mesh.CreateDisc("disc", 5, 30, scene, false, BABYLON.Mesh.DEFAULTSIDE);
 ```
-Parameters are: name, radius, tessellation, scene, updatable and the optional side orientation (see below). The last two parameters can be omitted if you just need the default behavior :
+Параметры: имя, радиус, тесселяция, сцена, updatable and the optional side orientation (see below). Последние два параметра могут быть опущены, если вам просто нужно поведение по умолчанию :
 ```javascript
 var disc = BABYLON.Mesh.CreateDisc("disc", 5, 30, scene);
 ```
-With the  _tessellation_ value, you can get a regular polygon :  
-3 gives a triangle,  
-4 a square,  
-5 a pentagon,  
-6 a hexagon, 7 a heptagon, 8 an octogon, and so on.
+Параметр  _tessellation_ , позволяет получить regular polygon :  
+3 дает треугольник,  
+4 четырехугольник,  
+5 пятиугольник,  
+6 шестиугольник, 7 семиугольник, 8 восьми-угольник и т.д.
 
-* **Creation of a Cylinder**
+* **Создание цилиндра**
 
 ```javascript
 var cylinder = BABYLON.Mesh.CreateCylinder("cylinder", 3, 3, 3, 6, 1, scene, false, BABYLON.Mesh.DEFAULTSIDE);
 ```
 
-Parameters are: name, height, diamTop, diamBottom, tessellation, heightSubdivs, scene, updatable and the optional side orientation (see below). The last two parameters can be omitted if you just need the default behavior :
+Параметры: name, height, diamTop, diamBottom, tessellation, heightSubdivs, scene, updatable and the optional side orientation (see below). The last two parameters can be omitted if you just need the default behavior :
 ```javascript
 var cylinder = BABYLON.Mesh.CreateCylinder("cylinder", 3, 3, 3, 6, 1, scene);
 ```
@@ -76,54 +76,54 @@ var cylinder = BABYLON.Mesh.CreateCylinder("cylinder", 3, 3, 3, 6, 1, scene);
 ```javascript
 var torus = BABYLON.Mesh.CreateTorus("torus", 5, 1, 10, scene, false, BABYLON.Mesh.DEFAULTSIDE);
 ```
-Parameters are: name, diameter, thickness, tessellation (highly detailed or not), scene, updatable and the optional side orientation (see below). The last two parameters can be omitted if you just need the default behavior :
+Параметры: имя, diameter, thickness, tessellation (highly detailed or not), scene, updatable and the optional side orientation (see below). The last two parameters can be omitted if you just need the default behavior :
 ```javascript
 var torus = BABYLON.Mesh.CreateTorus("torus", 5, 1, 10, scene);
 ```
 
-* **Creation of a Knot**
+* **Создание Knot**
 
 ```javascript
 var knot = BABYLON.Mesh.CreateTorusKnot("knot", 2, 0.5, 128, 64, 2, 3, scene, false, BABYLON.Mesh.DEFAULTSIDE);
 ```
-Parameters are: name, radius, tube, radialSegments, tubularSegments, p, q, scene, updatable and the optional side orientation (see below). The last two parameters can be omitted if you just need the default behavior :
+Параметры: name, radius, tube, radialSegments, tubularSegments, p, q, scene, updatable and the optional side orientation (see below). The last two parameters can be omitted if you just need the default behavior :
 ```javascript
 var knot = BABYLON.Mesh.CreateTorusKnot("knot", 2, 0.5, 128, 64, 2, 3, scene);
 ```
 You can learn more about torus knots... [**RIGHT HERE**](http://en.wikipedia.org/wiki/Torus_knot).
 
-* **Creation of a Polygon**
+* **Создание Polygon**
 
 ```javascript
 var polygon = BABYLON.Mesh.CreatePolygon("polygon", [V1, V2, ..., Vn], scene, [[V1, V2, ..., Vn], [V1, V2, ..., Vn], ....[V1, V2, ..., Vn]], false, BABYLON.Mesh.DEFAULTSIDE);
 ```
 
-Parameters are: name, polygon shape as an array of comma-separated vectors,  scene, optional holes as an array of an array of comma-separated vectors, optional updatable and the optional side orientation. The last three parameters can be omitted if you just need the default behavior :
+Параметры: имя, polygon shape как массив vectors разделенных запятыми,  сцена, опциональные отверстия как массив массивов векторов разделенных запятыми, optional updatable and the optional side orientation. Последние три параметра можно опустить если нужно только поведение по-умолчанию :
 
-NOTE all vectors are Vector3 and should be in the XoZ plane, ie of the form BABYLON.Vector3(x, 0, z);
+NOTE все векторы это Vector3 и должны быть в плоскости XoZ , т.е. формы BABYLON.Vector3(x, 0, z);
 
 ```javascript
 var polygon = BABYLON.Mesh.CreatePolygon("cylinder", [V1, V2, ..., Vn], scene);
 ```
-Uses [PolygonMeshBuilder](http://doc.babylonjs.com/tutorials/polygonmeshbuilder)
+Использование [PolygonMeshBuilder](http://doc.babylonjs.com/tutorials/polygonmeshbuilder)
 
-* **Extrusion of a Polygon**
+* **Выдавливание Polygon**
 
 ```javascript
 var polygon = BABYLON.Mesh.ExtrudePolygon("polygon", [V1, V2, ..., Vn], 2, scene, [[V1, V2, ..., Vn], [V1, V2, ..., Vn], ....[V1, V2, ..., Vn]], false, BABYLON.Mesh.DEFAULTSIDE);
 ```
 
-Parameters are: name, polygon shape as an array of comma-separated vectors, depth, scene, optional holes as an array of an array of comma-separated vectors, optional updatable and the optional side orientation. The last three parameters can be omitted if you just need the default behavior :
+Параметры: имя, polygon shape как массив vectors разделенных запятыми, глубина, сцена, опциональные отверстия как массив массивов векторов разделенных запятыми, optional updatable and the optional side orientation. The last three parameters can be omitted if you just need the default behavior :
 
-NOTE all vectors are Vector3 and should be in the XoZ plane, ie of the form BABYLON.Vector3(x, 0, z) and in counter clockwise order;
+NOTE все векторы это Vector3 и должны быть в плоскости XoZ , т.е. формы BABYLON.Vector3(x, 0, z) и считаются в порядке по-часовой стрелке;
 
 ```javascript
 var polygon = BABYLON.Mesh.CreatePolygon("polygon", [V1, V2, ..., Vn], 2, scene);
 ```
 
-Uses [PolygonMeshBuilder](http://doc.babylonjs.com/tutorials/polygonmeshbuilder)
+Использование [PolygonMeshBuilder](http://doc.babylonjs.com/tutorials/polygonmeshbuilder)
 
-* **Creation of a Lines Mesh**
+* **Создание Lines Mesh**
 
 ```javascript
 var lines = BABYLON.Mesh.CreateLines("lines", [
@@ -133,41 +133,41 @@ var lines = BABYLON.Mesh.CreateLines("lines", [
     new BABYLON.Vector3(0, 0, 10)
 ], scene);
 ```
-Parameters are: name, [array of comma-separated vectors], scene. 
+Параметры: имя, [array of comma-separated vectors], сцена. 
 
-I could explain how the Lines Mesh constructor works, but I think you can see how it works just by looking at the demo code above.  Notice the [ and ].  Those are the enclosing tokens for an array, yet another kind of Javascript value.  The first vector3 of the array is the starting location for drawing lines.  After that, a comma, and then the next vector3 location... indicating where the line is drawing-to next.  Then, another comma, and another vector3 to a new location.  You can add as many vectors as you wish, but notice that the LAST vector3 does not have a comma following it.  Please make your array of vectors be formatted similarly.    
+Я мог бы объяснить как работает конструктор Lines Mesh, но я думаю, вы можете увидеть, как это работает, просто просмотрев демо-код выше.  Обратите внимание на [ and ].  Это enclosing tokens для массива, еще одного типа данных в Javascript.  Первый vector3 массива это стартовое положение для отрисовки линии.  После, запятая, и следующий vector3 положения... указывает, где линия рисуется - к следующему.  Потом, еще запятая, и следующий vector3 нового положения.  Можно добавлять сколько угодно векторов, но ПОСЛЕДНИЙ vector3 не должен иметь запятую после него.  Пожалуйста, сделайте так, чтобы ваш массив векторов был отформатирован аналогично.    
 
-* **Creation of DashedLines Mesh**
+* **Создание DashedLines Mesh**
 
 ```javascript
 var dashedlines = BABYLON.Mesh.CreateDashedLines("dashedLines", [v1, v2, ... vn], dashSize, gapSize, dashNb, scene);
 ```
-Parameters are : name, [array of Vectors3], dashSize, gapSize, dashNumber, scene.    
+Параметры : name, [array of Vectors3], dashSize, gapSize, dashNumber, scene.    
 As for Lines, a line along the vectors3 will be displayed in space. It will try to set _dashNumber_ strokes on this line depending on the length of each segment between two successive vectors3.    
 _dashSize_ and _gapSize_ are relative to each other dash and gap sizes within these strokes.   
 
 You might also be interested in our new [LinesSystem](http://doc.babylonjs.com/tutorials/Mesh_CreateXXX_Methods_With_Options_Parameter#linesystem).
 
 
-* **Creation of a Ribbon**
+* **Создание Ribbon**
 
-What is a ribbon ?  
+Что такое ribbon ?  
 
-First, imagine a series of successive points defining a path.  
-Next, imagine another series of successive points, so another path.  
-Now, if you construct triangular faces by joining alternate points of the first and the second path, like when you lace shoes, you get a ribbon.  
+Во-первых, представьте себе последовательность последовательных точек, определяющих путь.  
+Затем представьте себе еще одну последовательность последовательных точек, так что еще один путь.  
+Теперь, если вы создаете треугольные грани, соединяя альтернативные точки первого и второго путей, например, когда вы кружате обувь, вы получаете ленту.  
 
-Your paths don't need to be parallel. They don't even need to be straight lines or in the same plane.  
-They are, well, whatever you want. The ribbon will just follow your paths.  
+Ваши пути не обязательно должны быть параллельными. Они даже не должны быть прямыми или в одной плоскости.  
+Они, ну, что бы вы ни хотели. Лента будет просто следовать вашим дорожкам.  
 
-Now, imagine, instead of having only two paths, you've got many successive different paths.  
-The full ribbon will then be the continuous surface joining all these inbetween pair of paths surface.
+Теперь, представьте себе, вместо того, чтобы иметь только два пути, у вас есть много последовательных разных путей.  
+Тогда полная лента будет сплошной поверхностью, соединяющей все эти промежуточные пары поверхностей пути.
 
 ```javascript
 var ribbon = BABYLON.Mesh.CreateRibbon("ribbon", [path1, path2, ..., pathn], false, false, 0, scene, false, BABYLON.Mesh.DEFAULTSIDE);
 ```
 
-Parameters are: name, pathArray, closeArray, closePath, offset, scene, updatable? (if the mesh must be modified later)  and the optional side orientation (see below).
+Параметры: имя, pathArray, closeArray, closePath, offset, scene, updatable? (if the mesh must be modified later)  and the optional side orientation (see below).
 
 
   * name : a string, the name you want to give to your shape,
@@ -186,7 +186,7 @@ var ribbon = BABYLON.Mesh.CreateRibbon("ribbon", [path1, path2, ..., pathn], fal
 
 I you need more details about how to deal with this method, you would probably read the [**Parametric Shapes**](http://doc.babylonjs.com/tutorials/Parametric_Shapes) part.
 
-* ** Creation of a Tube**
+* ** Создание Tube**
 
 ```javascript
 var tube = BABYLON.Mesh.CreateTube("tube", [V1, V2, ..., Vn], radius, tesselation, radiusFunction, cap, scene, false, BABYLON.Mesh.DEFAULTSIDE);
@@ -255,10 +255,10 @@ Because this value creates twice the vertices of a frontside mesh. In other term
 
 
 
-### More Basic Elements - Grounds
+### Еще базовые элементы - Grounds
 Up to this point, we have been talking about basic elements from our [**Playground Demo Scene 02**]( https://www.babylonjs-playground.com/?2), but a few important mesh shapes (basic elements) are not included in that demo scene.  They are each ways of making 'ground' in Babylon.js.  Let's take a look: 
 
-* **Creation of a Ground**
+* **Создание Ground**
 
 ```javascript
 var ground = BABYLON.Mesh.CreateGround("ground", 6, 6, 2, scene);
@@ -268,7 +268,7 @@ Parameters are: name, width, depth, subdivs, scene
 
 Our [**Playground Demo Scene 01**]( https://www.babylonjs-playground.com/?1) uses a CreateGround constructor... so you can see one in action by using the above link.
 
-* **Creation of a Ground From HeightMap**
+* **Создание Ground на основе HeightMap (карты высот)**
 
 ```javascript
 var ground = BABYLON.Mesh.CreateGroundFromHeightMap("ground", "heightmap.jpg", 200, 200, 250, 0, 10, scene, false, successCallback);
