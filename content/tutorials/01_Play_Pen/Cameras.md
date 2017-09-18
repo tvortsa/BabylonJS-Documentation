@@ -56,33 +56,33 @@ The ArcRotateCamera is an excellent camera to animate. By default, the ArcRotate
    scene.activeCamera.alpha += .01;
 ```
 
-It's beautiful, it's easy, it's Babylon.js. Please see the  [ArcRotateCamera API page](http://doc.babylonjs.com/classes/3.0/ArcRotateCamera) for more information.
+Это красиво, это просто, это Babylon.js. См. страницу  [ArcRotateCamera API page](http://doc.babylonjs.com/classes/3.0/ArcRotateCamera).
 
-It is interesting to know that panning an ArcRotateCamera is also possible. By default you can do that with CTRL+MouseLeftClick, but you can specify to use MouseRightClick instead, by setting _useCtrlForPanning_ to false in the _attachControl_ call :
+Интересно знать, что возможно панорамирование ArcRotateCamera. По-умолчанию с помощью CTRL+MouseLeftClick, но можно вместо этого задать MouseRightClick, установка _useCtrlForPanning_ в false в _attachControl_ call :
 
 ```javascript
    camera.attachControl(canvas, noPreventDefault, useCtrlForPanning);
 ```
-(more info about this method in the **Wrapping Up** section)
+(больше информации об этом методе в разделе **Wrapping Up**)
 
-If required you can also totally deactivate panning by setting :
+При необходимости вы также можете полностью отключить панорамирование, установив :
 ```javascript
    scene.activeCamera.panningSensibility = 0;
 ```
 
 ## State
 
-Camera state can be stored in order to restore it later. The state of a camera includes position, rotation and FOV.
-To store the current state, just call `camera.storeState()`. 
-To restore it, call `camera.restoreState()`.
+Camera state могут быть сохранены для последующего восстановления. Состояние камеры включая: положение, вращение и FOV.
+Текущее состояние можно сохранять, просто вызвав `camera.storeState()`. 
+Для восстановления - `camera.restoreState()`.
 
-You can find a live example here: https://www.babylonjs-playground.com/#GH5SVN#1
+Живой пример: https://www.babylonjs-playground.com/#GH5SVN#1
 
-## Unique Purpose Cameras
+## Уникальные камеры
 
-There are some Babylon.js cameras that have unique purposes. I will try to explain their purposes as we examine each camera and their constructors.
+Есть несколько камер в Babylon.js которые имеют уникальное назначение. Я попытаюсь объяснить их цели, когда мы исследуем каждую камеру и их конструкторы.
 
-The next 2 cameras... touch, and gamepad... are somewhat superseded by our new [Universal Camera](http://doc.babylonjs.com/classes/3.0/UniversalCamera) (explained far below).  The documentation for touch and gamepad cameras are still included here... for historical reference.
+Следующие 2 камеры... touch, и gamepad... несколько заменены нашими новыми [Universal Camera](http://doc.babylonjs.com/classes/3.0/UniversalCamera) (explained far below).  Документация для сенсорных и игровых камер по-прежнему включена здесь... для исторической справки.
 
 * **TouchCamera** - The TouchCamera is a camera that works closely with hand.js, and opens Babylon.js to the modern technology of DOM Gesture Events. Touch is a type a 'gesture', whether it be on a pad or screen, with finger(s), stylus, glove, feet, or laser pointer. Any movement that can be sensed... can be considered a gesture. You can learn all about gestures by visiting [**a wikipedia page that tells all about it**](http://en.wikipedia.org/wiki/Gesture_recognition).
 
@@ -196,13 +196,13 @@ The VRDeviceOrientationFreeCamera uses FreeCamera as its basis, so all of the pr
 ```
 The WebVRFreeCamera uses FreeCamera as its basis, so all of the properties and methods of FreeCamera... are also found on our WebVRFreeCamera.
 
-* **Universal Camera** - Introduced with version 2.3 of Babylon.js, this camera, as its name says... provides a universal way to handle inputs. It's basically a combination of the FreeCamera + TouchCamera + GamepadCamera.
+* **Universal Camera** - Начиная с версии 2.3 Babylon.js, эта камера, как говорит ее имя... обеспечивает универсальный способ обработки ввода. Это в основном сочетание FreeCamera + TouchCamera + GamepadCamera.
 
-The Universal Camera is now the default camera used by Babylon.js if nothing is specified, and it’s your best choice if you’d like to have a FPS-like control in your scene. Indeed, you can control the camera using keyboard/mouse on a desktop machine, using a finger/touch on a mobile device and a gamepad controller on Xbox One, for instance. The same camera is handling those 3 inputs at the same time... in a transparent way for you. This also means that on a touch PC, you can use those 3 types of inputs on the same machine, if you’d like. ;-) All demos on babylonjs.com are based upon that feature. Plug a Xbox controller into your PC and you’ll be able to navigate most of our demos, using it, for instance.
+Universal Camera теперь камера используемая в Babylon.js по-умолчанию, и это ваш лучший выбор, если вы хотите иметь FPS-like control в ващей сцене. В самом деле, вы можете управлять камерой с помощью клавиатуры / мыши на настольном компьютере, используя палец / касание на мобильном устройстве и контроллер геймпада на Xbox One, например. The same camera is handling those 3 inputs at the same time... in a transparent way for you. This also means that on a touch PC, you can use those 3 types of inputs on the same machine, if you’d like. ;-) All demos on babylonjs.com are based upon that feature. Plug a Xbox controller into your PC and you’ll be able to navigate most of our demos, using it, for instance.
 
 ## Inputs
 
-Every Babylon.js camera will automatically handle inputs for you... once you call the camera's _attachControl_ function. And you can revoke the control by using the _detachControl_ function. Most Babylon.js experts use a two-step process to activate and attach a camera:
+Каждая камера в Babylon.js будет автоматически обрабатывать ввод... как только вы вызовите функцию _attachControl_. И вы можете отменить управление с помощью функции _detachControl_. Most Babylon.js experts use a two-step process to activate and attach a camera:
 
 ```javascript
    // First, set the scene's activeCamera... to be YOUR camera.
