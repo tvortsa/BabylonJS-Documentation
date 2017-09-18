@@ -2,17 +2,17 @@
 ID_PAGE: 21911
 PG_TITLE: 01. Creating Basic Scene
 ---
-### In this tutorial, we are going to create a basic 3D scene with Babylon.js.
+### В этом уроке, мы собираемся создать базовую 3D сцену в Babylon.js.
 ![Babylon JS 01](http://urbanproductions.com/wingy/babylon/misc/tut01pic01.jpg)
 
 _Two Basic Shapes in a Basic Scene_
 
 
-Before you start, be sure you have a WebGL compatible browser (e.g.  Internet Explorer 11+, Firefox 4+, Google Chrome 9+, Opera 15+, etc.).
+Сперва, убедитесь что у вас WebGL совместимый браузер (e.g.  Internet Explorer 11+, Firefox 4+, Google Chrome 9+, Opera 15+, etc.).
 
 
-### The HTML Part
-First, create a basic HTML5 web page:
+### Часть HTML
+Первое, создадим базовую HTML5 web страницу:
 
 ```html
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ First, create a basic HTML5 web page:
 
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-      <title>Babylon - Basic scene</title>
+      <title>Babylon - Базовая сцена</title>
    </head>
 
    <body>
@@ -28,9 +28,9 @@ First, create a basic HTML5 web page:
 
 </html>
 ```
-### The CSS Style Part
+### Часть CSS стилей
 
-Inside the ```<head>``` part, please add this CSS to view the canvas in maximum size:
+Внутри ```<head>``` , добавьте этот CSS чтобы видеть canvas в максимальном размере:
 ```css
 <style>
   html, body {
@@ -49,114 +49,116 @@ Inside the ```<head>``` part, please add this CSS to view the canvas in maximum 
 </style>
 ```
 
-### The Javascript External Includes Part (the framework)
+### Внешние Javascript включения (фрэймворк)
 
-Now we load our framework files.  After the CSS, (but still inside the ```<head>``` part), please add:
+Теперь мы звгрузим файлы нашего фрейм-ворка.  После CSS, (но все еще внутри ```<head>``` ), добавьте:
 
 ```html
 <script src="babylon.js"></script>
 <script src="hand.js"></script>
-<script src="cannon.js"></script>  <!-- optional physics engine -->
-<!-- <script src="Oimo.js"></script>  New physics engine -->
+<script src="cannon.js"></script>  <!-- опционально, движок физики -->
+<!-- <script src="Oimo.js"></script>  новый физ. движок -->
 ```
-(if you don't already have those files, you can find them here: https://github.com/BabylonJS/Babylon.js, and here: http://handjs.codeplex.com/)
+(если у вас еще нет этих файлов, вы можете найти их здесь: https://github.com/BabylonJS/Babylon.js, и здесь: http://handjs.codeplex.com/)
 
 
-Next, we go inside the ```<body>``` part of the web page... and add a HTML5 canvas element, which will be used to draw our scene.
+Затем, перейдем внутрь ```<body>``` нашей страницы... и добавим HTML5 canvas element, который и будет отрисовывать нашу сцену.
 
 ```html
 <canvas id="renderCanvas"></canvas>
 ```
 
-Now, we make the jump from HTML5 into Javascript.  Still inside the ```<body>``` part of the web page,  please add:
+Теперь, сделаем переход от HTML5 в Javascript.  Оставаясь в ```<body>``` ,  добавьте:
 ```javascript
 <script>
 
-  // Get the canvas element from our HTML above
+  // Получаем canvas element из нашего HTML выше
   var canvas = document.getElementById("renderCanvas");
 
-  // Load the BABYLON 3D engine
+  // Загружаем движок BABYLON 3D
   var engine = new BABYLON.Engine(canvas, true);
 ```
 
-After this, you will add your scene creation code.  To keep your code compatible with the Babylon.js Playground, we recommend that you insert a 'createScene' function at this point.  Besides generating a Babylon Scene object, createScene() is where you will add your basic scene requirements:  One camera, one light, and one or more shapes/meshes.
+После чего, нужно добавить код содания сцены.  Чтобы сохранить ваш код совместимым с Babylon.js Playground, мы рекомендуем чтобы вставка функции 'createScene' была именно здесь.  Помимо генерации объекта сцены Babylon Scene, createScene() это место где вы будете добавлять ваши базовые requirements для сцены:  Одна камера, один источник света, и один или более shapes/meshes.
 
-So now, add this entire createScene function to your web page:
+А теперь, добавим всю вашу функцию createScene на вашу web страницу:
  
 ```javascript
-  // This begins the creation of a function that we will 'call' just after it's built
+  // Она начинается с создания функции которая будет 'call' сразу после сборки
   var createScene = function () {
 
-    // Now create a basic Babylon Scene object 
+    // создается объект базовой сцены - Babylon Scene 
     var scene = new BABYLON.Scene(engine);
 
-    // Change the scene background color to green.
+    // меняем цвет фона на green.
     scene.clearColor = new BABYLON.Color3(0, 1, 0);
 
-    // This creates and positions a free camera
+    // создаем и позиционируем камеру free camera
     var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 5, -10), scene);
 
-    // This targets the camera to scene origin
+    // задает нацеливание камеры на центр сцены
     camera.setTarget(BABYLON.Vector3.Zero());
 
-    // This attaches the camera to the canvas
+    // присоединяем камеру к canvas
     camera.attachControl(canvas, false);
         
-    // This creates a light, aiming 0,1,0 - to the sky.
+    // создаем источник света, aiming 0,1,0 - to the sky.
     var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
 
-    // Dim the light a small amount
+    // уменьшим интенсивность света
     light.intensity = .5;
 
-    // Let's try our built-in 'sphere' shape. Params: name, subdivisions, size, scene
+    // попробуем встроенную фигуру сферы - 'sphere'. Параметры: имя, тесселяция, размер, сцена
     var sphere = BABYLON.Mesh.CreateSphere("sphere1", 16, 2, scene);
 
-    // Move the sphere upward 1/2 its height
+    // переместим сферу на половину ее высоты
     sphere.position.y = 1;
 
-    // Let's try our built-in 'ground' shape.  Params: name, width, depth, subdivisions, scene
+    // попробуем встроенную фигуру 'ground' .  Параметры: имя, ширина, глубина, тесселяция, сцена
     var ground = BABYLON.Mesh.CreateGround("ground1", 6, 6, 2, scene);
 
-    // Leave this function
+    // покидаем эту функцию
     return scene;
 
-  };  // End of createScene function
+  };  // конец функции createScene
 ```
 
-Yes, that is quite a function, but do not let it scare you.  You will learn more about the parameters and properties for lights, cameras, and built-in shapes... in the tutorials to come.  The main thing to know is that our createScene function has all requirements complete.  It contains:  
+Вы узнаете больше о параметрах, свойствах lights, cameras, и встренных геометрических объектах... из уроков.  Главное знать что наша функция createScene выполняет все требования.  Она содержит:  
 
-*  a Babylon Scene object
-*  a camera that has been attached
-*  a light that has been aimed
-*  a sphere that has been placed at position 0,1,0 (we moved it upward +y)
-*  a ground plane that has been placed at position 0,0,0 (default position)
+*  объект Babylon Scene
+*  камеру которая должна быть присоединена
+*  источник света который был направлен
+*  сферу которая размещена в координатах 0,1,0 (мы переместили ее по +y)
+*  и плоскость земли которая размещена в координатах 0,0,0 (координаты по-умолчанию)
 
-There are three more things to add to your web page.  First, a 'call' to the createScene function that we just completed.  Add this:
+Есть еще три вещи, которые нужно добавить на web страницу.  Первое, 'call' на функцию createScene которую мы только что сделали. 
+Добавьте это:
 
 ```javascript
-  // Now, call the createScene function that you just finished creating
+  // вызываем функцию createScene которую мы создали
   var scene = createScene();
 ```  
 
-Then, the all-important rendering loop.  Add this:
+Затем, всеохватывающий цикл рендеринга.  добавляем:
 
 ```javascript
-  // Register a render loop to repeatedly render the scene
+  // регистрируем render - цикл для повторяющегося рендеринга сцены
   engine.runRenderLoop(function () {
     scene.render();
   });
 ```  
 
-And last, an optional but handy canvas/window resize event handler.  Add this:
+И последнее, опциональный но полезный обработчик события изменения размера canvas/window.
+Добавим:
 
 ```javascript
-  // Watch for browser/canvas resize events
+  // следит за событием изменения размера browser/canvas 
   window.addEventListener("resize", function () {
     engine.resize();
   });
 ```
 
-There.  All the Javascript inserting is done.  Make sure you close the script, body, and html elements. The last three lines of your HTML5 web page... should be:
+Итак.  Все вставки Javascript inserting закончены.  Убедитесь что закрыли элементы script, body, и html. Последние три строчки вашей HTML5 страницы... должны быть:
 
 ```html
 </script>
@@ -164,12 +166,12 @@ There.  All the Javascript inserting is done.  Make sure you close the script, b
 </html>
 ```
 
-You are done! Save your file (in the same folder as babylon.js, hand.js, and cannon.js) and browse it with your WebGL-ready browser.  You should see your new scene displayed in 3D on its canvas.
+Сохраните файл (в той-же папке что и babylon.js, hand.js, и cannon.js) и откройте его вашим WebGL-ready браузером.  Вы должны увидеть new scene displayed in 3D on its canvas.
 
 A near-exact duplicate of the createScene function used in this tutorial... can be seen [**RIGHT HERE**](http://www.babylonjs.com/playground/#1GM4YQ) at the Babylon.js Playground.  You will also see the scene render LIVE, ONLINE!  Use the playground's 'Get .zip' choice if you want to download the entire index.html file used in this tutorial.
 
-## Got Troubles? ##
-Here is what the entire web page should look like:
+## Возникли проблемы? ##
+Вот как должна выглядеть вся веб-страница:
 
 ```html
 <!doctype html>
