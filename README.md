@@ -1,51 +1,51 @@
-# Babylon.js - Official documentation website
+# Babylon.js - web-сайт официальной документации
 
 ![](http://www.babylonjs.com/img/layout/logo-babylonjs-v3.svg)
 
-Welcome on the repository of the official documentation of [Babylon.js](http://www.babylonjs.com).
+Добро пожаловать в реппозиторий официальной документации [Babylon.js](http://www.babylonjs.com).
 
-## Prerequisites
-Before beginning, please be sure to have these packages installed:
+## Предпосылки
+Прежде чем начать убедитесь что у вас установлены пакеты:
 
  * [Nodejs](https://nodejs.org/)
  * [grunt-cli](https://www.npmjs.com/package/grunt-cli): just use ```npm install -g grunt-cli```
 
 
-## Run a local copy of the documentation
+## Запуск локальной копии документации
  * ```git clone https://github.com/BabylonJS/Documentation.git && cd Documentation```Clone this repository
- * ```npm install``` to install all dependencies
- * ```grunt build``` to build documentation
- * ```grunt serve``` runs the server and open a tab in your default browser
+ * ```npm install``` для установки всех зависимостей
+ * ```grunt build``` для сборки документации
+ * ```grunt serve``` запускает сервер и открывает вкладку в вашем браузере
 
-## Updating a local copy of a fork of the documentation
-See [configure a remote for a fork](https://help.github.com/articles/configuring-a-remote-for-a-fork/)
-and [syncing a fork](https://help.github.com/articles/syncing-a-fork/) for additional github documentation.
+## Обновление локальной копии форка документации
+См [configure a remote for a fork](https://help.github.com/articles/configuring-a-remote-for-a-fork/)
+и [syncing a fork](https://help.github.com/articles/syncing-a-fork/) для дополнительной информации.
 
- * ```git fetch upstream``` to get the latest upstream copy
- * ```git checkout master``` to checkout master branch
- * ```get merge upstream/master``` to merge master with current upstream/master
- * ```git push``` (optional) to push lastest version to your fork
- * ```npm install``` to update any dependencies
- * ```npm prune``` to remove any old dependencies
+ * ```git fetch upstream``` получить последнюю восходящую копию
+ * ```git checkout master``` забрать master ветку
+ * ```get merge upstream/master``` слить master с текущей upstream/master
+ * ```git push``` (опционально) пушнуть последнюю версию в ваш форк
+ * ```npm install``` апдейт зависимостей
+ * ```npm prune``` удалить устаревшие зависимости
 
-## Updating a local copy of the documentation
- * ```git pull``` to get the lastest documentation
- * ```npm install``` to update any dependencies
- * ```npm prune``` to remove any old dependencies
+## Апдей локальной копии документации
+ * ```git pull``` получить последнюю документацию
+ * ```npm install``` апдейт зависимостей
+ * ```npm prune``` удалить устаревшие зависимости
 
-## Useful command
+## Полезные команды
 
-You don't need to edit html yourself: edit markdown files and use:
+Не нужно редактировать html самому: редактируйте markdown файлы и используйте:
  
-```grunt build``` to rebuild html from markdown and index the search.
+```grunt build``` для пересборки html из markdown и индекса поиска.
 
-If you want to edit some styles or see your changes without repeating ```grunt build```, then use ```grunt serve```.
+Если вы хотите редактировать какие-то стили или видеть ваши изменения без повторения ```grunt build```, используйте ```grunt serve```.
 
 
-```grunt serve``` features:
- * Opens automatically the browser at ```localhost:3000```
- * Watcher on markdown
- * Recompile everything on detected change 
+```grunt serve``` возможности:
+ * Автоматически открывает браузер на ```localhost:3000```
+ * Наблюдает за markdown
+ * Рекомпилирует все обнаруженные изменения 
 
  
 ## How to contribute?
