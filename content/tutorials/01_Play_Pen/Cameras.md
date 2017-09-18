@@ -2,22 +2,22 @@
 ID_PAGE: 22061
 PG_TITLE: 05. Cameras
 ---
-# Babylon.js Cameras #
+# Камеры в Babylon.js #
 
-In any Babylon.js scene, you can create as many cameras as you wish, but only one camera can be active at a time (unless you are using [multi-viewports](http://doc.babylonjs.com/tutorials/How_to_use_Multi-Views)).
+В любой сцене Babylon.js , вы можете создать столько камер, сколько пожелаете, но только одна камера может быть активна в каждый момент времени (если вы не используете [multi-viewports](http://doc.babylonjs.com/tutorials/How_to_use_Multi-Views)).
 
-Camera management in Babylon.js is pretty simple : first you create one of the camera listed below, then you attach it to canvas mouse and touch inputs (see **Wrapping Up** section).
+Управление камерами в Babylon.js очень просто : сперва вы создаете одну из камер из списка ниже, затем вы присоединяете ее к canvas mouse и touch вводу (см раздел **Wrapping Up** ).
 
-Babylon.js supports many types of cameras. We will begin with the two most-common types - the FreeCamera and the ArcRotateCamera.
+Babylon.js поддерживает многие типы камер. Мы начнем с двух наиболее распространенных типов - FreeCamera и ArcRotateCamera.
 
-* **FreeCamera** - This is a 'first person shooter' (FPS) type of camera where you control the camera with the mouse and the cursors keys. Like many of our cameras, you can also add control keys, or reassign them to other keys, such as keys 'w', 'a', 's', and 'd'.
+* **FreeCamera** - Это как в 'first person shooter' (FPS) где вы управляете камерой с помощью мыши и клавиш курсоров. Как и многие наши камеры, вы также можете добавить управляющие клавиши, или переназначить их другим клавишам, например 'w', 'a', 's', и 'd'.
 
-The FreeCamera does not automatically aim at a target, but after constructing a FreeCamera, you can easily set it to lock-on to a mesh or to a vector3 position... using the _lockedtarget_ property.
+FreeCamera не наводится автоматически на цель, но после создания FreeCamera, вы можете легко установить её приивязав к сетке или к vector3 позиции... используя свойство _lockedtarget_ .
 
-Here is how you construct a Babylon.js FreeCamera:
+Вот как создаются камеры Babylon.js FreeCamera:
 ```javascript
-// FreeCamera >> You can move around the scene with mouse and cursor keys
-// Parameters : name, position, scene
+// FreeCamera >> Вы можете перемещаться по сцене с помощью клавиш мыши и курсора
+// Параметры : name, position, scene
     var camera = new BABYLON.FreeCamera("FreeCamera", new BABYLON.Vector3(0, 1, -15), scene);
 ```
 The FreeCamera is constructed aiming in a +z direction. The position numbers we used in the constructor above... place it in a useful starting position. FreeCameras have many properties that you can use to adjust your view. Some of the most commonly used properties are _position_, _rotation_, _speed_, _inertia_, and _fov_. The FreeCamera is also used as the base camera for many of our other cameras, so you will come to 'view' it as an old friend. Please see the [FreeCamera API page](http://doc.babylonjs.com/classes/3.0/FreeCamera) for more information.
