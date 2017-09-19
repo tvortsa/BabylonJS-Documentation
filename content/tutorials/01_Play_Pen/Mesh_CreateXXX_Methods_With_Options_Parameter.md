@@ -2,23 +2,23 @@
 PG_TITLE: Mesh CreateXXX Methods With Options Parameter
 ---
 
-## MeshBuilder CreateXXX() Methods With Options Parameter
-In this tutorial, we will learn how to use the classical _CreateXXX()_ methods with the _options_ parameter instead of the full list of parameters.
-Indeed, as of BJS 2.3+, all the _CreateXXX()_ methods can be called either by
+## MeshBuilder CreateXXX() Методы с опциональными параметрами
+В этом уроке, мы научимся использовать классические методы _CreateXXX()_ с _опциональными_ параметрами вместо полного списка параметров.
+Действительно, в BJS 2.3+, все методы _CreateXXX()_ могли быть вызваны либо:
 ```javascript
 var mesh = BABYLON.Mesh.CreateMesh(name, param1, param2, param3, ..., scene);
 ```
-either by
+либо:
 ```javascript
 var mesh = BABYLON.MeshBuilder.CreateMesh(name, {param1 : val1, param2: val2}, scene);
 ```
 
-Then why use the _options_ parameter if it does the same as the parameter list?
+Тогда зачем использовать _options_ параметры если он делает то же самое, что и список параметров?
 
-Because it doesn't do EXACTLY the same thing.  Depending on the shape type, it allows making some (or all) parameters optional,  and it _can_ provide access to more available features on the created mesh.  (What one might call 'advanced parameters'.)
+Потому что это не ИДЕНТИЧНО.  В зависимости от типа формы, это позволяет (or all) parameters optional,  и _can_ обеспечить доступ к более доступным функциям созданной сетки.  (Что можно назвать 'advanced parameters'.)
 
 ### Fixed Shapes
-We call _fixed shapes_ all the mesh types that are not parametric. This is to say... all the mesh types what have an expected final shape.  For instance, if we create a _Sphere_ or a _Box_ mesh, we expect to get a spherical or a cubic shape, whereas if we create a _Ribbon_ mesh, it depends upon a data set to be created (the _pathArray_).  We can't predict its final shape.
+Мы называем _fixed shapes_ все типы мешей которые непараметрические. Это означает... all the mesh types what have an expected final shape.  НАпример, если мы создаем _Sphere_ или _Box_ mesh, мы ожидаем получить сферическую или кубическую форму, whereas if we create a _Ribbon_ mesh, it depends upon a data set to be created (the _pathArray_).  We can't predict its final shape.
 
 All fixed shapes can be created by default... by using a blank _options_ parameter :
 ```javascript
