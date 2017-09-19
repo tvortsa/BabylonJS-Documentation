@@ -2,16 +2,16 @@
 ID_PAGE: 22041
 PG_TITLE: 03. Position, Rotation, Scaling
 ---
-## Introduction
+## Введение
 
-In this tutorial, we are going to learn how to position, scale and rotate any kind of objects that you created in our last tutorial. We will also set a parent and start to understand how parenting affects position, rotation and scaling.
+В этом уроке, мы узнаем как позиционировать, масштабировать и вращать любые объекты, созданные в нашем последнем уроке. Мы также установим родителя и начнем понимать, как иерархия влияет на положение, поворот и масштабирование.
 
 ![Elements](/img/tutorials/Rotation%20and%20scaling/03.png)
 
 [**Playground Demo Scene 3 - Positioned, Scaled, and Rotated Boxes**]( https://www.babylonjs-playground.com/?3)
 
-## How can I do this ?
-As usual, we are beginning a createScene function by including the basic elements of a scene:
+## Как это сделать ?
+Как обычно, мы начинаем функцию createScene, включая основные элементы сцены
 ```javascript
 function createScene() {
   var scene = new BABYLON.Scene(engine);
@@ -20,7 +20,7 @@ function createScene() {
 }
 ```
 
-Then create as many boxes as you want:
+Затем создайте столько ящиков, сколько хотите.:
 ```javascript
 //Creation of 3 boxes
 var box1 = BABYLON.Mesh.CreateBox("Box1", 6.0, scene);
@@ -30,38 +30,38 @@ var box3 = BABYLON.Mesh.CreateBox("Box3", 6.0, scene);
 ```
 * **Position**
 
-You can easily position any boxes in the scene, anywhere you like. For example:
+Вы можете легко разместить любые боксы в сцене, где угодно. Например:
 
 ```javascript
-//Positioning the boxes
+//Позиционирование боксов
 box1.position = new BABYLON.Vector3(-20,0,0);
-box2.position.x = -10; // or box2.position = new BABYLON.Vector3(-10,0,0);
+box2.position.x = -10; // или box2.position = new BABYLON.Vector3(-10,0,0);
 box3.position.x = 0;
 ```
 
-And now, with the same ease of coding, you can rotate boxes around any axes.&nbsp; For example:
+И теперь, с такой же легкостью кодирования, вы можете поворачивать ящики вокруг любой оси.&nbsp; Например:
 
-* **Rotation** (angles are in radians)
+* **Rotation** (углы в радианах)
 
 ```javascript
-//Rotate the box around the x axis
+//Вращение бокса вокруг оси x 
 box1.rotation.x = Math.PI/4; // or box1.rotation = new BABYLON.Vector3(Math.PI/4,0,0);
 
-//Rotate the box around the y axis
+//Вращение бокса вокруг оси y 
 box2.rotation.y = Math.PI/6;
 ```
 
 * **Scaling**
 
-And yes, it is just as easy to scale the boxes along any axes.&nbsp; For example:
+И да, так же легко масштабировать ящики вдоль любых осей.&nbsp; Например:
 ```javascript
-//Scaling of 2x on the x axis
+//Масштабирование 2x по оси x 
 box3.scaling.x = 2; // or box3.scaling = new BABYLON.Vector3(2,1,1);
 ```
 
 * **Parenting**
 
-Another Babylon feature is attaching an object, relatively to another, by creating a parent-child link between two meshes. This link implies that all parent transformations (position/rotation/scaling) will also be applied to the child’s transformations.
+Еще одна фича Babylon - привязывать объект относительно другого, создавая связь между родителями и дочерними элементами между двумя сетками. This link implies that all parent transformations (position/rotation/scaling) will also be applied to the child’s transformations.
 ```javascript
 //Positioning box3 relative to box1
 box3.parent = box1;
