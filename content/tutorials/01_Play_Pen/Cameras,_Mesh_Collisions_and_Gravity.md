@@ -24,20 +24,20 @@ scene.gravity = new BABYLON.Vector3(0, -9.81, 0);
 camera.applyGravity = true; 
 ```
 
-**2 - Define an ellipsoid**
+**2 - Задаем элипсоидd**
 
-The next important step is to define the ellipsoid around our camera. This ellipsoid represents our player’s dimensions: a collision event will be raised when a mesh comes in contact with this ellipsoid, preventing our camera from getting too close to this mesh:
+Следующий важный шаг, определить эллипсоид вокруг нашей камеры. Этот эллипсоид представляет размеры нашего игрока: событие столкновения будет вызвано если меш столкнется с этим эллипсоидом, предотвращая слишком сильное сближение нашей камеры с этим мешем:
 
 ![Ellipsoid](https://camo.githubusercontent.com/19931f529e19679a0e2556e23fc94536e6a9b88c/687474703a2f2f7777772e626162796c6f6e6a732e636f6d2f7475746f7269616c732f30392532302d253230436f6c6c6973696f6e73253230477261766974792f30392d312e6a7067)
 
-The _ellipsoid_ property on babylon.js cameras is default to size (0.5, 1, 0.5), but changing values will make you taller, bigger, smaller, thinner, it depends upon the adjusted axis. In the example below, we will make our camera's ellipsoid a bit bigger than the default one:
+Свойство _ellipsoid_ самеры в babylon.js по-умолчанию (0.5, 1, 0.5), но изменение значений сделает вас выше, больше, меньше или тоньше, это зависит от настраиваемой оси. В приведенном ниже примере мы сделаем эллипсоид нашей камеры немного больше, чем стандартный:
 
 ```javascript
 //Set the ellipsoid around the camera (e.g. your player's size)
 camera.ellipsoid = new BABYLON.Vector3(1, 1, 1);
 ```
 
-**3 - Apply collision**
+**3 - Применение коллизий**
 
 Once you have those previous settings completed, our final step is to declare that we are interested in sensing collisions in our scene:
 
@@ -60,11 +60,11 @@ You can play with the scene used in this tutorial... by visiting the Babylon.js 
 
 Now, your camera is going to fall on the y-axis until it collides with the ground. And, your camera will collide with the box when you move it too near to it.
 
-**4 - Object vs. object collision**
+**4 - Столкновение объектов с объектами**
 
-You can also do the same thing with a mesh by playing with _mesh.ellipsoid_ property and _mesh.moveWithCollisions(velocity)_ function. This function will try to move the mesh according to given velocity and will check if there is no collision between current mesh and all meshes with checkCollisions activated.
+Вы также можете сделать то же самое с сеткой, играя с свойством _mesh.ellipsoid_ и _mesh.moveWithCollisions (velocity) _. Эта функция будет пытаться перемещать сетку в соответствии с заданной скоростью и будет проверять, нет ли конфликта между текущей сеткой и всеми сетками с активированными checkCollisions.
 
-You can also use _mesh.ellipsoidOffset_ to move the ellipsoid on the mesh (By default the ellipsoid is centered on the mesh)
+Вы также можете использовать _mesh.ellipsoidOffset_ для перемещения эллипсоида на сетку (По умолчанию эллипсоид центрирован на сетке)
 
 ```javascript
 var speedCharacter = 8;
@@ -86,7 +86,7 @@ Demo by Dad72: [**Move character with gravity and collision**](http://www.babylo
 
 ## Web worker based collision system (Since 2.1)
 
-BabylonJS 2.1 allows the user to move the collision calculations to an external web worker thus achieving better rendering time.
+BabylonJS 2.1 позволяет пользователю перемещать вычисления столкновений внешнему web worker что ускорит рендер.
 The worker is integrated in the single framework file, and no changes are required by the developer.
 The scene has now a new flag (false per default):
 ```javascript
