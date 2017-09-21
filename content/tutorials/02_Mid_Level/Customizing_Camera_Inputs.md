@@ -2,18 +2,18 @@
 ID_PAGE: 29000
 PG_TITLE: 19. Customizing camera inputs
 ---
-Some of Babylon.js's cameras respond to user inputs. This is especially true for ArcRotateCamera and FreeCamera. Babylon.js v2.4 introduced a different way to manage camera inputs to provide an approach oriented toward composability of inputs. These cameras now use an input manager and each input can be seen as a plugin that is specific to this camera family, and to a given input type (mouse, keyboard, gamepad, device orientation, ...).
+Некоторые камеры Babylon.js's реагируют на ввод пользователя. Особенно ArcRotateCamera и FreeCamera. Babylon.js v2.4 представил другой способ управления вводом камеры to provide an approach oriented toward composability of inputs. Эти камеры теперь используют диспетчер ввода и каждый вход можно рассматривать как плагин, специфичный для семейства этой камеры, и заданному типу ввода (mouse, keyboard, gamepad, device orientation, ...).
 
-Using input manager, you can add, remove, enable, or disable any input available for the camera. You can also implement your own input mechanism or override the existing one, very easily.
+Используя диспетчер ввода, вы можете добавлять, удалять, включать или отключать любой ввод, доступные для камеры. Вы также можете реализовать свой собственный механизм ввода или переопределить существующий, very easily.
 
-The input manager is available on these cameras through a property called "inputs".
+Диспетчер ввода доступен на этих камерах через свойство, называемое "inputs".
 
 ```javascript
 var camera = new BABYLON.FreeCamera("sceneCamera", new BABYLON.Vector3(0, 1, -15), scene);
 var inputManager = camera.inputs;
 ```
 
-## Configure your inputs
+## Конфигурация вашего ввода
 
 Most inputs provide settings to customize the sensibility and adapt it to your own scene.
 
