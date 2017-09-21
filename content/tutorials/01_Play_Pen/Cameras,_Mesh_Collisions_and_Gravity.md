@@ -14,12 +14,12 @@ _Final result_
 
 **1 - Объявить и применить гравитацию**
 
-The first thing to do is to define our gravity vector, defining the G-force. In a classic world such as Earth, the direction of the force of gravity is down (negative) along the Y axis, but feel free to change it!
+Первое, что нужно сделать, это определить наш вектор силы тяжести, определим G-force. В классических мирах, таких как Земля, направление силы тяжести - вниз (отрицательно) по оси Y , но вы можете это менять!
 ```javascript
 scene.gravity = new BABYLON.Vector3(0, -9.81, 0);
 ```
  
-Gravity can be applied to any camera that you have defined previously in your code.
+Гравитация может применяться к любой камере, которую вы определили ранее в своем коде.
 ```javascript 
 camera.applyGravity = true; 
 ```
