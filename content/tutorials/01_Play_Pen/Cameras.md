@@ -22,22 +22,22 @@ FreeCamera не наводится автоматически на цель, н�
 ```
 The FreeCamera is constructed aiming in a +z direction. The position numbers we used in the constructor above... place it in a useful starting position. FreeCameras have many properties that you can use to adjust your view. Some of the most commonly used properties are _position_, _rotation_, _speed_, _inertia_, and _fov_. The FreeCamera is also used as the base camera for many of our other cameras, so you will come to 'view' it as an old friend. Please see the [FreeCamera API page](http://doc.babylonjs.com/classes/3.0/FreeCamera) for more information.
 
-* **ArcRotateCamera** - This is a type of camera that rotates around a given target pivot. It can be controlled with cursors and mouse, or with touch events. It requires a third-party file called “hand.js”. This file is included in many of our demos, or it can be downloaded by [**clicking right here**](http://handjs.codeplex.com/releases/view/119684).
+* **ArcRotateCamera** - Это тип камеры, которая вращается вокруг заданной оси мишени. Его можно контролировать с помощью курсоров и мыши, или с событиями касания. It requires a third-party file called “hand.js”. This file is included in many of our demos, or it can be downloaded by [**clicking right here**](http://handjs.codeplex.com/releases/view/119684).
 
-Here is how you construct our handy ArcRotateCamera:
+ВОт как создают ArcRotateCamera:
 
 ```javascript
-// ArcRotateCamera >> Camera turning around a 3D point (here Vector zero) with mouse and cursor keys
-// Parameters : name, alpha, beta, radius, target, scene
+// ArcRotateCamera >> Camera вращается вокруг 3D точки (в нашем случае Vector zero) мышью или курсорными клавишами
+// Параметры : имя, альфа, beta, radius, цель, scene
    var camera = new BABYLON.ArcRotateCamera("ArcRotateCamera", 1, 0.8, 10, new BABYLON.Vector3(0, 0, 0), scene);
 ```
 
-The ArcRotateCamera is a little strange to use, at first, but in no time, you will be using them often and easily. There are three unique properties on the ArcRotateCamera which are named _alpha_ (in radians), _beta_ (in radians), and _radius_ (a number). If you imagine an ArcRotateCamera being a satellite orbiting the Earth, then the _alpha_ is the longitudinal or sideways axis, the _beta_ is the latitudinal or up/down axis, and the _radius_ is the altitude or height (distance) from the Earth's core. Here is an illustration:
+ArcRotateCamera немного странна в использовании, во-первых, but in no time, вы будете использовать их часто и легко. У ArcRotateCamera есть уникальные свойства которые называются _alpha_ (в радианах), _beta_ (в радианах), и _radius_ (число). Представьте что ArcRotateCamera находится на спутниковой орбите земли Earth, тогда _alpha_ продольная или боковая ось, а _beta_ является ось широты или вверх / вниз, а _radius_ это высота (расстояние) от ядра земли. Вот иллюстрация:
 ![](http://urbanproductions.com/wingy/babylon/misc/arc01.jpg)
 
-The ArcRotateCamera has many properties that you can use to adjust your view. Some of the most commonly used properties are _alpha_, _beta_, _radius_, _target_, _speed_, _inertia_, and _fov_.
+Камера ArcRotateCamera имеет много свойств, которые вы можете использовать для настройки вида. Некоторые из наиболее часто используемых свойств _alpha_, _beta_, _radius_, _target_, _speed_, _inertia_, и _fov_.
 
-By default, (with no .alpha and .beta values set), ArcRotateCameras aim in a +x direction. Ironically, there is no rotation property on an ArcRotateCamera, but there is a position property. Because the orientation of an ArcRotateCamera is relative to its _target_ setting, it is wise to use a handy method called _setPosition()_ to set the camera position.
+По-умолчанию, (with no .alpha and .beta values set), ArcRotateCameras нацелена на a +x direction. Ironically, there is no rotation property on an ArcRotateCamera, but there is a position property. Because the orientation of an ArcRotateCamera is relative to its _target_ setting, it is wise to use a handy method called _setPosition()_ to set the camera position.
 
 In the example below, we will construct an ArcRotateCamera with a target of 'Zero()' and no initial _alpha_, _beta_, or _radius_ values. (Be warned: A zeroed-out ArcRotateCamera aims in a strange way until _setPosition()_ is called). Then we will use the setPosition() function with a common Vector3 position value... to set our _alpha_, _beta_, and _radius_ values all at once, automatically:
 
