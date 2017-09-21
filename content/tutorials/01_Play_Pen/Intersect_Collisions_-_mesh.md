@@ -2,9 +2,9 @@
 ID_PAGE: 22101
 PG_TITLE: 10. Intersect Collisions - mesh
 ---
-## Introduction
+## Введение
 
-In dynamic scenes, objects are moving and interacting with each other. To get the best rendering, you will want to know when your meshes are in contact with each other. In this tutorial, we are going to discover how the collision system works.
+В динамичных сценах, объекты движутся и взаимодействуют друг с другом. Чтобы получить лучший рендеринг, вы захотите узнать, когда ваши сетки находятся в контакте друг с другом. В этом уроке мы узнаем, как работает система столкновений.
 
 ![Collisions](/img/tutorials/Collisions%20Intersect/10.png)
 
