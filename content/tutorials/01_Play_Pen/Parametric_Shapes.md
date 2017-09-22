@@ -2,15 +2,15 @@
 ID_PAGE: 24847
 PG_TITLE: Parametric Shapes
 ---
-## Introduction
+## Введение
 
-The basic meshes you've seen up until now have an expected shape : when you create a sphere mesh, you expect to see a spherical shape. The same goes for a box mesh, a torus, a cylinder, etc.
+Основные сетки, которые вы видели до сих пор, имеют ожидаемую форму : когда вы создаете сферическую сетку, вы ожидаете увидеть сферическую форму. То же самое касается коробчатой ​​сетки, тора, цилиндра и т. Д.
 
-There is another kind of mesh whose final shapes aren't fixed. Their final shape depends upon some parameters. So we call these meshes "Parametric Shapes".
+Существует еще один вид сетки, окончательные формы которой не фиксированы. Их окончательная форма зависит от некоторых параметров. Поэтому мы называем эти сетки «параметрическими фигурами».
 
-## The Ribbon
+## Ribbon (лента)
 
-The ribbon is a very simple and versatile shape. As it is very elementary, you can model almost any shape using a ribbon or many merged ribbons.
+Лента - очень простая и универсальная форма. Поскольку это очень элементарно, вы можете моделировать практически любую форму, используя ленту или много слитых лент.
 
 ![Ribbon](http://jerome.bousquie.fr/BJS/images/ribbon.png)
 
@@ -18,9 +18,9 @@ The ribbon is a very simple and versatile shape. As it is very elementary, you c
 CreateRibbon(name, pathArray, closeArray, closePath, offset, scene, updatable, sideOrientation);
 ```
   * **name** : string.
-  * **pathArray** : an array of paths.  
-As explained in the [Basic Elements](02. Discover Basic Elements) section, the ribbon is the surface between two, or more, paths.  
-A path is a series of successive points in space (Vector3).  
+  * **pathArray** : массив paths.  
+Как говорилось в разделе [Basic Elements](02. Discover Basic Elements), ribbon это поверхность между двумя и более, paths.  
+Path (путь) представляет собой ряд последовательных точек в пространстве (Vector3).  
 So a path can be designed by many ways : you can set points manually, import them from some set of data (json, etc), compute them with some maths function ... or even a bit of all of this.  
 The javascript representation of a path is simply an array of Vector3.  
 A path must have at least two points (four points if you provide a single path). 
