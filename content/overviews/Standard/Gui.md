@@ -153,76 +153,76 @@ transformCenterY|number|0.5|Определить центр трансформа
 
 ## Controls
 
-A control is an abstraction of a piece of UI. There are two kinds of controls:
-* Pure controls: A pure control defines an action or an information useful for the user. It could be a TextBlock or a Button.
-* Containers: Containers are used to organize your UI. They can contain other controls or containers.
+Control это абстрактная часть UI. Есть два вида контролов:
+* Чистый контрол: определяет действие или информацию, полезную для пользователя. Например TextBlock или Button.
+* Контейнеры: Контейнеры используют для организации вашего UI. Они могут содержать другие элементы управления или контейнеры.
 
-All controls share the following properties:
+Все контролы имеют следующие свойства:
 
-Свойство|Тип|Default|Comments
+Свойство|Тип|Default|Коммент
 --------|----|-------|--------
-alpha|number|1|Between 0 and 1. 0 means completely transparent. 1 means fully opaque
-color|string|Black|Foreground color
-fontFamily|string|Arial|Font family can be inherited. This means that if you set it on a container, it will be transmitted to all children of the container
-fontStyle|string|Empty string|Can be inherited. Value can be "italic", "bold" or "oblique"
-fontSize|number|18|Can be inherited
-zIndex|number|0|the zIndex can be used to reorder controls on the z axis
+alpha|number|1|Между 0 и 1. 0 - полностью прозрачный. 1 - полностью непрозрачный
+color|string|Black|Цвет переднего плана
+fontFamily|string|Arial|Семейство шрифтов может быть унаследовано. Тоесть, если вы зададите его для контейнера, оно будет передано всем детям контейнера
+fontStyle|string|Empty string|может быть унаследовано. Значения могут быть: "italic", "bold" или "oblique"
+fontSize|number|18|может быть унаследовано
+zIndex|number|0|zIndex используют для упорядочивания по оси z 
 
-Controls can be added directly to the AdvancedDynamicTexture or to a container with:
+Controls можно добавлять прямо в AdvancedDynamicTexture или в контейнер:
 
 ```
 container.addControl(control);
 ```
 
-They can be removed with:
+Контрол может быть удален:
 
 ```
 container.removeControl(control);
 ```
 
-You can also control the control visibility with `control.isVisible = false`.
+Можно также управлять видимостью контролов `control.isVisible = false`.
 
 ### TextBlock
 
-The TextBlock is a simple control used to display text:  https://www.babylonjs-playground.com/#XCPP9Y#2
+TextBlock это простой контрол используемый для отображения текста:  https://www.babylonjs-playground.com/#XCPP9Y#2
 
-Here are the properties you can define:
+Вот его свойства:
 
 Свойство|Тип|Default|Comments
 --------|----|-------|--------
-text|string|null|Text to display
-textWrapping|boolean|false|Can be set to true to enable text wrapping
-textHorizontalAlignment|number|BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER|Can be set to left, right or center
-textVerticalAlignment|number|BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER|Can be set to top, bottom or center
+text|string|null|отображаемый текст
+textWrapping|boolean|false|может быть true для включения переноса текста
+textHorizontalAlignment|number|BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER|может быть: left, right или center
+textVerticalAlignment|number|BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER|может быть: top, bottom или center
 
 ### InputText
 
-The InputText is a control used to let users insert text in a single line: https://www.babylonjs-playground.com/#UWS0TS
+Контрол InputText чтобы дать пользователю возможность ввода строки текста: https://www.babylonjs-playground.com/#UWS0TS
 
-Here are the properties you can define:
+Вот его свойства:
 
 Свойство|Тип|Default|Comments
 --------|----|-------|--------
-text|string|null|Text to display
-color|string|white|Foreground color
-background|string|black|Background color
-focusedBackground|string|black|Background color to use when the control is focused
-autoStretchWidth|boolean|true|The control will resize horizontally to adapt to text size
-maxWidth|valueAndUnit|100%|The maximum width allowed if autoStretchWidth is set to true
-margin|valueAndUnit|10px|Margin to use on left and right inside the control itself. This margin is used to determine where the text will be drawn
-thickness|number|1|Thickness of the border
+text|string|null|отображаемый текст
+color|string|white|Цвет переднего плана
+background|string|black|Цвет фона
+focusedBackground|string|black|Цвет фона, используемый при фокусировке на контроле
+autoStretchWidth|boolean|true|контрол может подгоняться по размеру горизонтально для адаптации под текст
+maxWidth|valueAndUnit|100%|Максимально доступная ширина при установленном в true autoStretchWidth 
+margin|valueAndUnit|10px|Margin используется left и right внутри самого контрола. Этот margin используется для определения места, где будет нарисован текст
+thickness|number|1|Толщина рамки
 
-The InputText is a focusable control. This means you can click / touch it in order to give it the focus and control over the keyboard events. You can remove the focus from the control by hitting enter or clicking outside of the control.
+InputText это фокусируемый контрол. Это значит вы можете кликнуть / тачнуть it in order to give it the focus and control over the keyboard events. You can remove the focus from the control by hitting enter or clicking outside of the control.
 
-The control provides several observables to track its state:
+Контрол предоставляет несколько наблюдателей чтобы отслеживать его состояние:
 
 Observables|Comments
 -----------|--------
-onTextChangedObservable|Raised when the text has changed
-onFocusObservable|Raised when the control loses the focus
-onBlurObservable|Raised when the control gets the focus
+onTextChangedObservable|Наступает когда текст изменен
+onFocusObservable|Наступает когда контрол теряет фокус
+onBlurObservable|Наступает когда контрол получает фокус
 
-Please note that the InputText has pretty limited edition support. Here are the supported keys:
+Имейте в виду, что InputText имеет довольно ограниченные возможности редактирования. Поддерживаются клавиши:
 * Delete
 * Backspace
 * Home
@@ -393,7 +393,7 @@ The VirtualKeyboard is a control used to display simple onscreen keyboard. This 
 
 #### Keys
 
-You can define the keys provided by the keyboard with the following code:
+Вы можете определить клавиши, предоставленные клавиатурой, следующим кодом:
 
 ```
 var keyboard = new BABYLON.GUI.VirtualKeyboard();
