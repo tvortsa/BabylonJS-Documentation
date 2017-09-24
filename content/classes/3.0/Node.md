@@ -5,11 +5,11 @@ PG_VERSION: 2.1
 TAGS:
     - Node
 ---
-## Description
+## Описание
 
 class [Node](/classes/3.0/Node)
 
-[Node](/classes/3.0/Node) is the basic class for all scene objects ([Mesh](/classes/3.0/Mesh), [Light](/classes/3.0/Light) [Camera](/classes/3.0/Camera)).
+[Node](/classes/3.0/Node) базовый класс для всех объектов сцены ([Mesh](/classes/3.0/Mesh), [Light](/classes/3.0/Light) [Camera](/classes/3.0/Camera)).
 
 ## Constructor
 
@@ -17,20 +17,20 @@ class [Node](/classes/3.0/Node)
 
 @constructor
 
-#### Parameters
- | Name | Type | Description
+#### Параметры
+ | Имя | Тип | Описание
 ---|---|---|---
- | name | string |      The node identifier
- | scene | [Scene](/classes/3.0/Scene) |      The scene linked to this node.
+ | name | string |      Идентификатор узла
+ | scene | [Scene](/classes/3.0/Scene) |      Сцена, связанная с этим узлом.
 ## Members
 
 ### name : string
 
-The name of the node
+Имя узла
 
 ### id : string
 
-The id of the node
+id узла
 
 ### uniqueId : number
 
@@ -38,7 +38,7 @@ The id of the node
 
 ### state : string
 
-The state of the node
+Состояние узла
 
 ### metadata : any
 
@@ -50,19 +50,19 @@ The state of the node
 
 ### animations : [Animation](/classes/3.0/Animation)[]
 
-The animations of the node
+Анимации узла
 
 ### onReady : (node: [Node](/classes/3.0/Node)) =&gt; void
 
-Called when node is ready
+Вызывается когда узел готов
 
 ### parent : [Node](/classes/3.0/Node)
 
-The parent node of the node
+Родитель узла
 
 ### onDisposeObservable : [Observable](/classes/3.0/Observable)&lt;[Node](/classes/3.0/Node)&gt;
 
-An event triggered when the mesh is disposed.
+Событие, инициируемое при размещении меша.
 
 @type {BABYLON.[Observable](/classes/3.0/Observable)}
 
@@ -70,20 +70,20 @@ An event triggered when the mesh is disposed.
 
 
 
-## Methods
+## Методы
 
 ### getClassName() &rarr; string
 
 
 ### getScene() &rarr; [Scene](/classes/3.0/Scene)
 
-Get the scene linked to this node
+Получить сцену, связанную с этим узлом
 ### getEngine() &rarr; [Engine](/classes/3.0/Engine)
 
-Get the engine linked to this node
+Получить engine связанный с этим узлом
 ### getWorldMatrix() &rarr; [Matrix](/classes/3.0/Matrix)
 
-Get the world matrix
+Получить матрицу мира (world matrix)
 ### updateCache(force) &rarr; void
 
 Update the cache
@@ -121,16 +121,16 @@ Is this node ready to be used/rendered
 @return {boolean} is it ready
 ### isEnabled() &rarr; boolean
 
-Is this node enabled.
+Включен ли этот узел.
 
-If the node has a parent and is enabled, the parent will be inspected as well.
+Если узел имеет родительский элемент и включен, родитель также будет проверен.
 
-@return {boolean} whether this node (and its parent) is enabled.
+@return {boolean} если этот узел (и его родитель) is enabled.
 
 @see setEnabled
 ### setEnabled(value) &rarr; void
 
-Set the enabled state of this node.
+Установите разрешенное состояние этого узлаSet the enabled state of this node.
 
 @see isEnabled
 
@@ -141,9 +141,9 @@ Set the enabled state of this node.
 
 ### isDescendantOf(ancestor) &rarr; boolean
 
-Is this node a descendant of the given node.
+Является ли этот узел потомком переданного узла.
 
-The function will iterate up the hierarchy until the ancestor was found or no more parents defined.
+Функция будет перебирать иерархию до тех пор, пока не будет найден предок или не будет определено больше родителей.
 
 @see parent
 
@@ -154,7 +154,7 @@ The function will iterate up the hierarchy until the ancestor was found or no mo
 
 ### getDescendants(directDescendantsOnly, predicate) &rarr; [Node](/classes/3.0/Node)[]
 
-Will return all nodes that have this node as ascendant.
+Вернет все узлы, которые имеют этот узел как восходящий.
 
 @return {BABYLON.[Node](/classes/3.0/Node)[]} all children nodes of all types.
 
@@ -165,7 +165,7 @@ optional | directDescendantsOnly | boolean |
 optional | predicate | (node: [Node](/classes/3.0/Node)) =&gt; boolean | : an optional predicate that will be called on every evaluated children, the predicate must return true for a given child to be part of the result, otherwise it will be ignored.  
 ### getChildMeshes(directDecendantsOnly, predicate) &rarr; [AbstractMesh](/classes/3.0/AbstractMesh)[]
 
-Get all child-meshes of this node.
+Получить все дочерние меши этого узла.
 
 #### Parameters
  | Name | Type | Description
