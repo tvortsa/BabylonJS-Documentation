@@ -1,155 +1,155 @@
 # Babylon.GUI
 
-The Babylon.js GUI library is an extension you can use to generate interactive user interface.
-It is build on top of the DynamicTexture.
+Библиотека Babylon.js GUI это расширение которое можно использовать для создания интерактивного пользовательского интерфейса0.
+Она построена поверх DynamicTexture.
 
-The latest version can be found here: https://github.com/BabylonJS/Babylon.js/tree/master/dist/preview%20release/gui.
+Последнюю версию можно найти здесь: https://github.com/BabylonJS/Babylon.js/tree/master/dist/preview%20release/gui.
 
-And the source code is available on the main Babylon.js repo: https://github.com/BabylonJS/Babylon.js/tree/master/gui.
+Исходники доступны в главном реппозитории Babylon.js : https://github.com/BabylonJS/Babylon.js/tree/master/gui.
 
-You can find a complete demo here: http://www.babylonjs.com/demos/gui/
+Здесь вы можете найти демо: http://www.babylonjs.com/demos/gui/
 
 ![Babylon.GUI](http://www.babylonjs.com/screenshots/gui.jpg)
 
-## Introduction
-Babylon.GUI uses a DynamicTexture to generate a fully functionnal user interface. It is an alternative to [Canvas2D](http://doc.babylonjs.com/extensions/Canvas2D_home).
+## Введение
+Babylon.GUI использует DynamicTexture для генерации полно-функционального интерфейса. Это альтернатива [Canvas2D](http://doc.babylonjs.com/extensions/Canvas2D_home).
 
-The main difference is that Canvas2D is full GPU oriented (text constructrion, animations, etc..) where Babylon.GUI relies on HTML canvas API.
+Основное отличие в том, что Canvas2D полностью GPU - ориентирован (text constructrion, animations, etc..) а Babylon.GUI полагается на HTML canvas API.
 
-While it could be seen as a less performant approach, it is also more flexible. Furthermore, HTML canvas is also GPU accelerated on most recent browsers.
+Хотя это можно рассматривать как менее производительный подход, он также более гибкий. Более того, HTML canvas также GPU accelerated в большинстве браузеров.
 
 ## AdvancedDynamicTexture
-To begin with Babylon.GUI, you first need an AdvancedDynamicTexture object.
+Чтобы работать с Babylon.GUI, сперва вам нужен объект AdvancedDynamicTexture.
 
-Babylon.GUI has two modes:
-* Fullscreen mode: In this mode, Babylon.GUI will cover the entire screen and will rescale to always adapt to your rendering resolution. It will also intercept clicks (including touches). To create an AdvancedDynamicTexture in fullscreen mode, just run this code:
+Babylon.GUI имеет два режима:
+* Fullscreen mode: В котором, Babylon.GUI будет охватывать весь экран и будет масштабироваться, чтобы всегда адаптироваться к вашему разрешению экрана. Он также будет перехватывать клики (включая касания). Для создания AdvancedDynamicTexture в полно-экранном режиме, просто запустите этот код:
 
 ```
 var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("myUI");
 ```
 
-Here is an example of a simple fullscreen mode GUI:  https://www.babylonjs-playground.com/#XCPP9Y#1
+Вот пример простого fullscreen mode GUI:  https://www.babylonjs-playground.com/#XCPP9Y#1
 
-* Texture mode: In this mode, BABYLON.GUI will be used as a texture for a given mesh. You will have to define the resolution of your texture. To create an AdvancedDynamicTexture in texture mode, just run this code:
+* Texture mode: в этом режиме, BABYLON.GUI будет использовать текстуру для переданного меша. Вам нужно будет определить разрешение вашей текстуры. Для создания AdvancedDynamicTexture в texture mode, запустите такой код:
 
 ```
 var advancedTexture2 = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(myPlane, 1024, 1024);
 ```
 
-Here is an example of a simple texture mode GUI:  https://www.babylonjs-playground.com/#ZI9AK7#1
+Вот пример простого texture mode GUI:  https://www.babylonjs-playground.com/#ZI9AK7#1
 
-Please note that handling pointer move events could be costly on complex meshes, so you can turn off supporting pointer move events with a fourth parameter:
+Обратите внимание, что обработка событий перемещения указателя мыши может быть дорогостоящей на сложных мешах, поэтому вы можете отключить отслеживание перемещения указателя четвертым параметром:
 
 ```
 var advancedTexture2 = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(myPlane, 1024, 1024, false);
 ```
 
-Once you have an AdvancedDynamicTexture object, you can start adding controls.
+Получив объект AdvancedDynamicTexture, вы можете начинать добавлять контролы.
 
-## General properties
+## Основные свойства
 
-### Events
-All controls have the following observables:
+### События
+Все контролы имеют следующих наблюдателей:
 
-Observables|Comments
+Наблюдатели|Комментарии
 -----------|--------
-onPointerMoveObservable|Raised when the cursor moves over the control. Only available on fullscreen mode
-onPointerEnterObservable|Raised when the cursor enters the control. Only available on fullscreen mode
-onPointerOutObservable|Raised when the cursor leaves the control. Only available on fullscreen mode
-onPointerDownObservable|Raised when pointer is down on the control.
-onPointerUpObservable|Raised when pointer is up on the control.
+onPointerMoveObservable|Происходит когда курсор входит в границы контрола. Доступно только в полноэкранном режиме
+onPointerEnterObservable|Происходит когда курсор enters the control. Доступно только в полноэкранном режиме
+onPointerOutObservable|Происходит когда курсор покидает control. Доступно только в полноэкранном режиме
+onPointerDownObservable|Происходит когда указатель is down on the control.
+onPointerUpObservable|Происходит когда указатель is up on the control.
 
-You can also define that a control is invisble to events (so you can click through it for instance). To do so, just call `control.isHitTestVisible`.
+Вы можете также сделать control невидимым для событий (поэтому вы можете щелкнуть по нему, например). Для чего просто вызовите: `control.isHitTestVisible`.
 
-Please note that `onPointerMoveObservable`, `onPointerDownObservable` and `onPointerUpObservable` will receive a Vector2 parameter containing the pointer coordinates. If you want to get the pointer coordinates in local control space, you have to call `control.getLocalCoordinates(coordinates)`.
+Заметьте, что `onPointerMoveObservable`, `onPointerDownObservable` и `onPointerUpObservable` принимают параметр Vector2 содержащий координаты указателя. Если вы хотите получить координаты указателя в локальном пространстве контрола, вызовите `control.getLocalCoordinates(coordinates)`.
 
-Here is an example of how to use observables:  https://www.babylonjs-playground.com/#XCPP9Y#121
+Вот пример того как использовать observables:  https://www.babylonjs-playground.com/#XCPP9Y#121
 
-### Alignments
-You can define the alignments used by your control with the following properties:
+### Выравнивание
+Вы можете определить выравнивания, используемые вашим элементом управления, со следующими свойствами:
 
-Property|Default|Comments
+Свойство|Дефолтно|Коммент.
 --------|-------|--------
-horizontalAlignment|BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER|Can be set to left, right or center.
-verticalAlignment|BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER|Can be set to top, bottom and center.
+horizontalAlignment|BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER|Может быть left, right или center.
+verticalAlignment|BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER|Может быть top, bottom или center.
 
-Here is an example of how to use alignments:  https://www.babylonjs-playground.com/#XCPP9Y#13
+Вот пример использования alignments:  https://www.babylonjs-playground.com/#XCPP9Y#13
 
-### Position and size
-You can set controls' position with the following properties:
+### Положение и размер
+Вы можете установить позицию элемента управления со следующими свойствами:
 
-Property|Type|Default|Default unit
+Свойство|Тип|Default|Default unit
 --------|----|-------|------------
 left|valueAndUnit|0|Pixel
 top|valueAndUnit|0|Pixel
 
-Size can be set with:
+Размер можно задать:
 
-Property|Type|Default|Default unit
+Свойство|Тип|Default|Default unit
 --------|----|-------|------------
 width|valueAndUnit|100%|Percentage
 height|valueAndUnit|100%|Percentage
 
-Paddings can be set with:
+Paddings можно задать:
 
-Property|Type|Default|Default unit
+Свойство|Тип|Default|Default unit
 --------|----|-------|------------
 paddingTop|valueAndUnit|0px|Pixel
 paddingBottom|valueAndUnit|0px|Pixel
 paddingLeft|valueAndUnit|0px|Pixel
 paddingRight|valueAndUnit|0px|Pixel
 
-Please note that paddings are inside the control. This means that the usableWidth = width - paddingLeft - paddingRight. Same for usableHeight = height - paddingTop - paddingBottom.
+Заметьте, что paddings внутри control. То-есть: usableWidth = width - paddingLeft - paddingRight. И так же для usableHeight = height - paddingTop - paddingBottom.
 
-All these properties can be defined using pixel or percentage as unit.
-To set value as pixel, use this construct: `control.left = "50px"`
-To set value as percentage, use this construct: `control.left = "50%"`
+Все эти свойства можно задавать в пикселях или в процентах.
+В пикселях: `control.left = "50px"`
+В процентах: `control.left = "50%"`
 
-You can also not define the unit (In this case the default unit will be used): `control.width = 0.5` (which is equivalent to `control.width = "50%"`)
+Можно и не указывать единицы измерения (тогда будут использоваться единицы измерения по-умолчанию): `control.width = 0.5` (эквивалентно `control.width = "50%"`)
 
-Here is an example of how to use positions and sizes:  https://www.babylonjs-playground.com/#XCPP9Y#14
+Вот пример использования positions и sizes:  https://www.babylonjs-playground.com/#XCPP9Y#14
 
-### Tracking positions
-All controls can be moved to track position of a mesh.
-To do this, just call `control.linkWithMesh(mesh)`. You can then offset the position with `control.linkOffsetX` and `control.linkOffsetY`.
+### Трекинг положения
+Все элементы управления можно перемещать для отслеживания положения сетки.
+Для чего, просто вызовите `control.linkWithMesh(mesh)`. Затем вы можете смещать позицию с помощью `control.linkOffsetX` и `control.linkOffsetY`.
 
-Here is an example of a trackable label:  https://www.babylonjs-playground.com/#XCPP9Y#16
+Вот пример trackable label:  https://www.babylonjs-playground.com/#XCPP9Y#16
 
-Please note that controls that want to track position of a mesh must be at root level (at AdvancedDynamicTexture level).
+Заметьте, что контролы которые хотят отслеживать положение сетки, должны быть на корневом уровне (на уровне AdvancedDynamicTexture).
 
-You can also move a control to a specific coordinates in your scene with `control.moveToVector3(position)`. Please note that the control will not stick with the vector if you change it afterwards.
+Вы также можете переместить элемент управления на определенные координаты в вашей сцене `control.moveToVector3(position)`. Заметьте, что контролы не будет придерживаться вектора, если вы измените его впоследствии.
 
-For Line control, you can also attach the second point to a control with `line.connectedControl = control`. In this case the `x2` and `y2` properties are used to offset the second point from the connected control.
+Для Line control, вы доложны также присоединить вторую точку к control с помощью `line.connectedControl = control`. Тогда свойства `x2` и `y2` используются для смещения второй точки от присоединенного контрола.
 
-With these 2 options, you can create a complete trackable label:  https://www.babylonjs-playground.com/#XCPP9Y#20
+С этими двумя опциями вы можете создать полностью trackable label:  https://www.babylonjs-playground.com/#XCPP9Y#20
 
-### Adaptive scaling
-When in fullscreen UI, you can decide to define your UI with a fixed resolution.
-To define this resolution, just set `myAdvancedDynamicTexture.idealWidth = 600` **or** `myAdvancedDynamicTexture.idealHeight = 400`.
+### Адаптивное масштабирование
+В полноэкранном UI, вы можете задавать фиксированное разрешение UI.
+Просто задайте `myAdvancedDynamicTexture.idealWidth = 600` **или** `myAdvancedDynamicTexture.idealHeight = 400`.
 
-If both are set, the idealWidth will be used.
+Если заданы оба, используется idealWidth.
 
-When ideal resolution is set, all values expressed **in pixels** are considered relatively to this resolution and scaled accordingly to match the current resolution.
+Когда ideal resolution задан, все значения, выраженные **в пикселях** считаются относительно этого разрешения и масштабируются в соответствии с текущим разрешением.
 
-Even when ideal size is set, the fullscreen UI will be rendered at the same resolution of your canvas, but you can decide (mostly for performance reason) to force the texture to use the ideal size for resolution as well. To do so, just call `myAdvancedDynamicTexture.renderAtIdealSize = true`.
+Даже если ideal size задан, полноэкранный UI будет рендериться в том же разрешении вашего холста, но вы можете решить (прежде всего из соображений производительности) чтобы заставить текстуру использовать идеальный размер для разрешения. Для этого просто вызовите `myAdvancedDynamicTexture.renderAtIdealSize = true`.
 
-Here is an example of how to use horizontal adaptive scaling:  https://www.babylonjs-playground.com/#XCPP9Y#39
+Вот пример использования horizontal adaptive scaling:  https://www.babylonjs-playground.com/#XCPP9Y#39
 
-### Rotation and Scaling
+### Вращение и масштабирование
 
-Controls can be transformed with the following properties:
+Controls можно трансформировать с помощью следующих свойств:
 
-Property|Type|Default|Comments
+Свойство|Type|Default|Comments
 --------|----|-------|--------
-rotation|number|0|Value is in radians
+rotation|number|0|Значение в радианах
 scaleX|number|1|
 scaleY|number|1|
-transformCenterX|number|0.5|Define the center of transformation on X axis. Value is between 0 and 1
-transformCenterY|number|0.5|Define the center of transformation on Y axis. Value is between 0 and 1
+transformCenterX|number|0.5|Определить центр трансформации по оси X. Значение между 0 и 1
+transformCenterY|number|0.5|Определить центр трансформации по оси Y. Значение между 0 и 1
 
-**Please be aawre that transformations are done at rendering level so after all computations.** This means that alignment or positioning will be done first without taking transform in account.
+**Пожалуйста, убедитесь, что преобразования выполняются на уровне рендеринга, после всех вычислений.** Это означает, что выравнивание или позиционирование будут выполняться первыми без учета трансформирования.
 
-Here is an example of how to use rotation and scaling:  https://www.babylonjs-playground.com/#XCPP9Y#22
+Пример использования rotation and scaling:  https://www.babylonjs-playground.com/#XCPP9Y#22
 
 ## Controls
 
@@ -159,7 +159,7 @@ A control is an abstraction of a piece of UI. There are two kinds of controls:
 
 All controls share the following properties:
 
-Property|Type|Default|Comments
+Свойство|Тип|Default|Comments
 --------|----|-------|--------
 alpha|number|1|Between 0 and 1. 0 means completely transparent. 1 means fully opaque
 color|string|Black|Foreground color
@@ -188,7 +188,7 @@ The TextBlock is a simple control used to display text:  https://www.babylonjs-p
 
 Here are the properties you can define:
 
-Property|Type|Default|Comments
+Свойство|Тип|Default|Comments
 --------|----|-------|--------
 text|string|null|Text to display
 textWrapping|boolean|false|Can be set to true to enable text wrapping
@@ -201,7 +201,7 @@ The InputText is a control used to let users insert text in a single line: https
 
 Here are the properties you can define:
 
-Property|Type|Default|Comments
+Свойство|Тип|Default|Comments
 --------|----|-------|--------
 text|string|null|Text to display
 color|string|white|Foreground color
@@ -304,7 +304,7 @@ Changing the `isChecked` property will raise an observable called `checkbox.onIs
 
 The control is rendered using the following properties:
 
-Property|Type|Default|Comments
+Свойство|Тип|Default|Comments
 --------|----|-------|--------
 color|string|white|Foreground color
 background|string|black|Background color
@@ -321,7 +321,7 @@ Changing the `isChecked` property will raise an observable called `checkbox.onIs
 
 The control is rendered using the following properties:
 
-Property|Type|Default|Comments
+Property|Тип|Default|Comments
 --------|----|-------|--------
 color|string|white|Foreground color
 background|string|black|Background color
@@ -339,7 +339,7 @@ The value itself is specified with `slider.value` and will raise an observable e
 
 The control is rendered using the following properties:
 
-Property|Type|Default|Comments
+Свойство|Type|Default|Comments
 --------|----|-------|--------
 borderColor|string|white|Color used to render the border of the thumb
 color|string|white|Foreground color
@@ -355,7 +355,7 @@ The line will draw a line (!!) between two points.
 
 Here are the properties you can define:
 
-Property|Type|Default|Comments
+Свойство|Тип|Default|Comments
 --------|----|-------|--------
 x1|number|0|X coordinate of the first point
 y1|number|0|Y coordinate of the first point
@@ -402,7 +402,7 @@ keyboard.addKeysRow(["1", "2", "3", "4", "5", "6", "7", "8", "9", "0","\u2190"])
 
 Every key will be created using default values specified by the following properties:
 
-Property|Default
+Свойство|Default
 --------|----
 defaultButtonWidth|40px
 defaultButtonHeight|40px
@@ -464,7 +464,7 @@ Containers has one specific property: `container.background`. Use it to define t
 ### Rectangle
 The Rectangle is a rectangular container with the following properties:
 
-Property|Type|Default|Comments
+Свойство|Type|Default|Comments
 --------|----|-------|--------
 thickness|number|1|Thickness of the border
 cornerRadius|number|0|Size in pixel of each corner. Used to create rounded rectangles
@@ -474,7 +474,7 @@ Here is an example of a rectangle control:  https://www.babylonjs-playground.com
 ### Ellipse
 The Ellipse is a ellipsoidal container with the following properties:
 
-Property|Type|Default|Comments
+Свойство|Type|Default|Comments
 --------|----|-------|--------
 thickness|number|1|Thickness of the border
 
@@ -497,7 +497,7 @@ Whenever a user interacts with the color picker an observable is triggered (`col
 
 The control is rendered using the following properties:
 
-Property|Type|Default|Comments
+Свойство|Тип|Default|Comments
 --------|----|-------|--------
 size|string or number|"200px"|The size, width, and height property will always be the same value since the color picker can only be a square.
 
