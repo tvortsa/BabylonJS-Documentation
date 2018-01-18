@@ -15,3 +15,5 @@ public/html/*
 
 !public/html/img/
 .history/
+package.json
+package-lock.json
