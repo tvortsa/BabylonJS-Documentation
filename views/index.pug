@@ -99,7 +99,7 @@ include includes/banner.pug
                     }
                 &lt;/style&gt;
         p.js.
-            Теперь напишем необхрдимый для демонстрации JS код. Для начала вставим в конец вашего &lt;body&gt;:
+            Теперь напишем необходимый для демонстрации JS код. Для начала вставим в конец вашего &lt;body&gt;:
         pre.js
             code.html.js.
                 &lt;script&gt;
@@ -115,7 +115,7 @@ include includes/banner.pug
             Мы приведем базовый код для всех приложений BabylonJS, создание сцены, вставка и отображение каркасов
             (две базовые формы: сфера и поверхность земли).
         p.js.
-            ШАг первый - получить ссылку на элемент canvas из нашего HTML документа:
+            Шаг первый - получить ссылку на элемент canvas из нашего HTML документа:
         pre.js
             code.javascript.js.
                 var canvas = document.getElementById('renderCanvas');
@@ -127,36 +127,36 @@ include includes/banner.pug
         p.js.
             Затем создаем нашу сцену (scene). Чтобы ваша программа была совместимой с Babylon.js Playground,
             рекомендуем вставить здесь функцию "createScene". За кадром она создает объект Babylon Scene
-            Object, <code>createScene()</code> is where you will add your basic scene requirements: a camera, a light,
-            and two basic meshes (a sphere and a ground plane).
+            , <code>createScene()</code> здесь добавим все что необходимо сцене: камеру, свет,
+            и два базовых меша (сфера и земля).
         pre.js
             code.javascript.js.
                 var createScene = function() {
-                    // create a basic BJS Scene object
+                    // создаем базовый объект сцены - BJS Scene 
                     var scene = new BABYLON.Scene(engine);
 
-                    // create a FreeCamera, and set its position to (x:0, y:5, z:-10)
+                    // создаем камеру FreeCamera, и настраиваем ее положение (x:0, y:5, z:-10)
                     var camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5,-10), scene);
 
-                    // target the camera to scene origin
+                    // нацеливаем камеру на нулевую точку сцены (scene origin)
                     camera.setTarget(BABYLON.Vector3.Zero());
 
-                    // attach the camera to the canvas
+                    // подключаем камеру к canvas
                     camera.attachControl(canvas, false);
 
-                    // create a basic light, aiming 0,1,0 - meaning, to the sky
+                    // создаем базовый свет, нацеленный в 0,1,0 - означает, в небо
                     var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0,1,0), scene);
 
-                    // create a built-in "sphere" shape; its constructor takes 4 params: name, subdivisions, radius, scene
+                    // создаем встроенную форму "sphere" ; ее конструктор принимает 4 параметра: name, subdivisions, radius, scene
                     var sphere = BABYLON.Mesh.CreateSphere('sphere1', 16, 2, scene);
 
-                    // move the sphere upward 1/2 of its height
+                    // приподнимаем сферу на половину ее высоты
                     sphere.position.y = 1;
 
-                    // create a built-in "ground" shape; its constructor takes 5 params: name, width, height, subdivisions and scene
+                    // создаем встроенную форму "ground" ; ее конструктор принимает 5 параметров: name, width, height, subdivisions и scene
                     var ground = BABYLON.Mesh.CreateGround('ground1', 6, 6, 2, scene);
 
-                    // return the created scene
+                    // возвращаем созданную сцену
                     return scene;
                 }
         p.js.
