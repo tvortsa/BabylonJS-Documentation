@@ -202,7 +202,7 @@ include includes/banner.pug
                   // Создаем game используя 'renderCanvas'
                   let game = new Game('renderCanvas');
 
-                  // Создаем сценц
+                  // Создаем сцену
                   game.createScene();
 
                   // стартуем анимацию
@@ -244,45 +244,44 @@ include includes/banner.pug
                // создаем FreeCamera, и задаем ей позицию (x:0, y:5, z:-10)
                this._camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5,-10), this._scene);
 
-               // target the camera to scene origin
+               // нацеливаем камеру на scene origin
                this._camera.setTarget(BABYLON.Vector3.Zero());
 
-               // attach the camera to the canvas
+               // присоединяем камеру к canvas
                this._camera.attachControl(this._canvas, false);
 
-               // create a basic light, aiming 0,1,0 - meaning, to the sky
+               // создаем basic light, aiming 0,1,0 - meaning, to the sky
                this._light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0,1,0), this._scene);
 
-               // create a built-in "sphere" shape; with 16 segments and diameter of 2
+               // создаем встроенную форму "sphere"; с 16 сегментами и диаметром 2
                let sphere = BABYLON.MeshBuilder.CreateSphere('sphere1',
                                         {segments: 16, diameter: 2}, this._scene);
 
-               // move the sphere upward 1/2 of its height
+               // перемещаем сферу вверх на 1/2 ее высоты
                sphere.position.y = 1;
 
-               // create a built-in "ground" shape
+               // создаем встроенную форму "ground"
                let ground = BABYLON.MeshBuilder.CreateGround('ground1',
                                         {width: 6, height: 6, subdivisions: 2}, this._scene);
             }
         p.ts.
-            Next we'll implement <code>animate</code>, which also takes no
-            parameters and returns nothing. This routine starts the rendering
-            loop and adds the resize Event Listener :
+            ЗАтем реализуем <code>animate</code>, который также ничего не принимает и не возвращает.
+            Эта процедура запускает цикл рендеринга и добавляет слушатель события изменения размера :
         pre.ts.
             animate() : void {
-              // run the render loop
+              // запуск цикла рендера
               this._engine.runRenderLoop(() => {
                   this._scene.render();
               });
 
-              // the canvas/window resize event handler
+              // обработчик события изменения размера canvas/окна
               window.addEventListener('resize', () => {
                   this._engine.resize();
               });
             }
         p.ts.
-            Finally, save the <code>game.ts</code> file and add the reference to <code>game.js</code>,
-            which will be generated from <code>game.ts</code>, to your index.html :
+            НАконец, сохраняем файл <code>game.ts</code> и добавляем ссылку на <code>game.js</code>,
+            whкоторая будет сгенерирована из <code>game.ts</code>, в ваш index.html :
         pre.ts.
             code.html.
                 &lt;!DOCTYPE html&gt;
@@ -292,7 +291,7 @@ include includes/banner.pug
                 &lt;/head&gt;
                 &lt;/html&gt;
         p.ts.
-            Your Awesome Project directory should now contain:
+            Папка вашего проекта теперь должна содержать:
         pre.ts
             code.github.ts.
                 yourAwesomeProject
@@ -301,12 +300,12 @@ include includes/banner.pug
                     |- babylon.2.3.js
                     |- babylon.2.3.d.ts
         p.ts.
-            Now compile <code>game.ts</code> which will output <code>game.js</code>:
+            Компилируем <code>game.ts</code> который должен вывести <code>game.js</code>:
         pre.ts
             code.github.ts.
                 tsc game.ts babylon.2.3.d.ts
         p.ts.
-            You should now see <code>game.js</code> in Your Awesome Project directory:
+            Теперь вы должны видеть <code>game.js</code> в аппке вашего проекта:
         pre.ts
             code.github.ts.
                 yourAwesomeProject
@@ -316,8 +315,8 @@ include includes/banner.pug
                     |- babylon.2.3.js
                     |- babylon.2.3.d.ts
         p.
-            And that's it! Save your files and open <code>index.html</code> with your favorite web browser. You should see the
-            following:
+            Это все! Сохраните ваши файлы и откройте <code>index.html</code> в браузере. Вы должны увидеть следующее:
+            
         div.bigimage
             a(href="http://www.babylonjs-playground.com/#12S23Y", target="_blank")
                 img(src='img/getting_started_demo.jpg').demo-img
