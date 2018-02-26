@@ -160,31 +160,31 @@ include includes/banner.pug
                     return scene;
                 }
         p.js.
-            Now that our <code>createScene()</code> function is ready, we need to call it:
+            Итак наша функция <code>createScene()</code> готова, теперь остается только вызвать ее:
         pre.js
             code.javascript.js.
                 var scene = createScene();
         p.js.
-            The next three javascript lines are very important, as they register a render loop to repeatedly render the
-            scene on the canvas:
+            Следующие три строки javascript очень важны, поскольку регистрируют цикл рендеринга на постоянно повторяющийся рендер
+            сцены на холсте:
         pre.js
             code.javascript.js.
                 engine.runRenderLoop(function() {
                     scene.render();
                 });
         p.js.
-            Lastly, you should implement a little canvas/window resize event handler, like this:
+            Наконец, вы должны реализовать немного canvas/window обработчик события изменения размера, примерно так:
         pre.js
             code.javascript.js.
                 window.addEventListener('resize', function() {
                     engine.resize();
                 });
         p.ts.
-            We will now write the necessary Typescript code to run our demonstration.
-            To begin with, create a new file <code>game.ts</code> with <code>Game</code>
-            class with a <code>constructor</code> and two methods, <code>createScene<c/ode>
-            and <code>animate</code>. And add a Event Listener for <code>DOMContentLoaded</code>
-            which will instantiate the <code>Game</code>, create the scene and start the animation :
+           йТеперь мы напишем необходимые Typescript код для запуска нашего демо.
+            Начнем с, создания нового файла <code>game.ts</code> с классом <code>Game</code>
+            конструктором <code>constructor</code> , и двумя методами <code>createScene<c/ode>
+            и <code>animate</code>. Добавим Event Listener для <code>DOMContentLoaded</code>
+            который будет инстанцировать <code>Game</code>, создавать сцену и запускать анимацию :
         pre.ts
             code.javascript.ts.
                 class Game {
@@ -199,19 +199,19 @@ include includes/banner.pug
                 }
 
                 window.addEventListener('DOMContentLoaded', () => {
-                  // Create the game using the 'renderCanvas'
+                  // Создаем game используя 'renderCanvas'
                   let game = new Game('renderCanvas');
 
-                  // Create the scene
+                  // Создаем сценц
                   game.createScene();
 
-                  // start animation
+                  // стартуем анимацию
                   game.animate();
                 });
         p.ts.
-            Next we'll add the instance variables needed for our game. These will
-            all be private so, following the Babylon js <a href="http://doc.babylonjs.com/generals/Approved_Naming_Conventions">
-            coding guidelines</a>, they'll all begin an underscore :
+            Затем мы добавим переменные экземпляра, необходимые для нашей игры. Все они
+            должны быть приватными, согласно кодингу в Babylon js <a href="http://doc.babylonjs.com/generals/Approved_Naming_Conventions">
+            coding guidelines</a>, они все начинаются с нижнего подчеркивания :
         pre.ts.
             code.javascript.ts.
                 class Game {
@@ -224,24 +224,24 @@ include includes/banner.pug
                     ...
                 }
         p.ts.
-            Now implement the <code>constructor</code>, its passed the name of the canvas element
-            and constructors have no return value. The code uses the <code>canvasElement</code>
-            parameter to create the canvas and then creates the engine :
+            Теперь реализуем <code>constructor</code>, ему передается имя элемента canvas
+            а конструкторы не имеют возвращаемых значений. Код использует параметр <code>canvasElement</code>
+            для создания canvas а затем создания engine :
         pre.ts.
             constructor(canvasElement : string) {
-              // Create canvas and engine
+              // Создание canvas и engine
               this._canvas = <HTMLCanvasElement>document.getElementById(canvasElement);
               this._engine = new BABYLON.Engine(this._canvas, true);
             }
         p.ts.
-            Then implement <code>createScene</code>, which takes no parameters and returns nothing
-            hence its type is <code>void</code>. The code comments detail its actions.
+            Затем реализуем <code>createScene</code>, которые не принимает параметров и ничего не возвращает
+            поэтому его вид <code>void</code>. В комментариях кода подробно описаны его действия.
         pre.ts.
             createScene() : void {
-               // create a basic BJS Scene object
+               // создаем базовый объект сцены BJS
                this._scene = new BABYLON.Scene(this._engine);
 
-               // create a FreeCamera, and set its position to (x:0, y:5, z:-10)
+               // создаем FreeCamera, и задаем ей позицию (x:0, y:5, z:-10)
                this._camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5,-10), this._scene);
 
                // target the camera to scene origin
