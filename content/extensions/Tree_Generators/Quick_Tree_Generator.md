@@ -2,13 +2,13 @@
 
 ![Generated Tree ](/img/extensions/trees/quick1.png)
 
-The function QuickTreeGenerator uses a sphere with randomized vertices to generate a tree. 
+Функция QuickTreeGenerator использует сферу с рандомизированными вершинами для генерации дерева.
 
 It is based on Julian Temechon's tutorial on the VertexData object http://www.pixelcodr.com/tutos/trees/trees.html
 
-A demo can be found at:  https://www.babylonjs-playground.com/#LG3GS#107
+Демонстрацию можно найти по адресу:  https://www.babylonjs-playground.com/#LG3GS#107
 
-## How to use it.
+## How to use it
 
 Clone or copy the file https://github.com/BabylonJS/Extensions/tree/master/TreeGenerators/QuickTreeGenerator
 

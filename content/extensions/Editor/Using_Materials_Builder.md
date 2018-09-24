@@ -1,50 +1,53 @@
-# Using the Materials Builder
+# Использование Materials Builder
 
-## Opening the Materials Builder
+## Открытие Materials Builder
 
-As for the Post-Processes Builder, you are able to develop custom materials using a JSON configuration.
-Just select it in the main tool bar.
+Как и в случае с Post-Processes Builder, вы можете разрабатывать пользовательские материалы, используя JSON конфигурацию.
+Просто выберите его в main tool bar.
 
-Features available:
-* Develop GLSL code directly in the Editor (vertex and pixel)
-* Manage custom uniforms (float, Vector2, Vector3, Vector4)
+Доступные функции:
+
+* Разработка GLSL кода прямо в Editor (vertex и pixel)
+* Управление кастомной uniforms (float, Vector2, Vector3, Vector4)
 * Manage custom samplers (textures)
 
 ![OpeningMaterialsBuilder](/img/extensions/Editor/MaterialsBuilder/OpeningMaterialsBuilder.png)
 
-## Adding a new material
+## Добавление нового материала
 
-Before opening the Materials Builder, you can add a new material or select an existing one in order to edit it.
-To add a new material, just click "**Add New**: then, a new material with default vertex, pixel and configuration files is created.
+Перед открытием Materials Builder, вы можете добавить новый материал или выбрать существующий, чтобы редактировать его.
+Чтобы добавить новый материал, просто нажмите "**Add New**: затем создается новый материал с файлами вершин, пикселей и конфигурации по умолчанию.
 
-To edit a material, just select one and click the button "**Select**"
+Чтобы отредактировать материал, просто выберите его и нажмите кнопку "**Select**"
 
 ![AddingMaterial](/img/extensions/Editor/MaterialsBuilder/AddingMaterial.png)
 
-## Using the Materials Builder
+## Используем Materials Builder
 
-Once opened, you are now able to configure the uniforms & samplers, and edit the vertex & pixel shaders code.
+После открытия, теперь вы можете настроить uniforms & samplers, и отредактировать сод для vertex & pixel shaders.
 
-On the left, you have an edition tool which allows you to configure the material:
+Слева у вас есть инструмент редактирования, который позволяет вам настроить материал:
+
 * The material's name
 * Build the material
 
-And the preview scene:
+И сценарий предварительного просмотра:
+
 * Enable / disable shadows
-* Enable / disable lights (to test if all light types are supported by your shader)
+* Enable / disable lights (проверить, поддерживаются ли все типы освещения вашим шейдером)
 
 ![MaterialsBuilder](/img/extensions/Editor/MaterialsBuilder/MaterialsBuilder.png)
 
-## The configuration
+## Конфигурация
 
-The configuration tab allows you to declare custom uniforms and samplers.
-In the default material all available options, like "**time**", are used as example (here, time is used by waves function in default vertex shader).
+Вкладка «Конфигурация» позволяет объявлять пользовательские uniforms and samplers.
+В материале по умолчанию доступны все доступные параметры, такие как "**time**", используются в качестве примера (здесь время используется функцией волн в вершинном шейдере по умолчанию).
 
-For samplers, the parameter "**uniformName**" is important: the name is used to declare the texture matrix and texture infos in the vertex shader.
+Для пробников параметр "**uniformName**" это важно, он используется для объявления текстурной матрицы и текстуры в вершинном шейдере.
 
 ![Configuration](/img/extensions/Editor/MaterialsBuilder/Configuration.png)
 
-## The vertex shader
+## Вершинный шейдер
 
 The vertex and pixel shaders follow the way to create materials with Babylon.js. A lot of code is already written then you only have to include files (**#include**).
 All default "includes" are already implemented in default material.

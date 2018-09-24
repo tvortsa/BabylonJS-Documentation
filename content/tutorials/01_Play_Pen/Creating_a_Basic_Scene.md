@@ -2,16 +2,17 @@
 ID_PAGE: 21911
 PG_TITLE: 01. Creating Basic Scene
 ---
-### В этом уроке, мы собираемся создать базовую 3D сцену в Babylon.js.
+
+# В этом уроке, мы собираемся создать базовую 3D сцену в Babylon.js
+
 ![Babylon JS 01](http://urbanproductions.com/wingy/babylon/misc/tut01pic01.jpg)
 
-_Two Basic Shapes in a Basic Scene_
-
+## _Две основные формы в Basic Scene_
 
 Сперва, убедитесь что у вас WebGL совместимый браузер (e.g.  Internet Explorer 11+, Firefox 4+, Google Chrome 9+, Opera 15+, etc.).
 
-
 ### Часть HTML
+
 Первое, создадим базовую HTML5 web страницу:
 
 ```html
@@ -28,9 +29,11 @@ _Two Basic Shapes in a Basic Scene_
 
 </html>
 ```
+
 ### Часть CSS стилей
 
 Внутри ```<head>``` , добавьте этот CSS чтобы видеть canvas в максимальном размере:
+
 ```css
 <style>
   html, body {
@@ -51,7 +54,7 @@ _Two Basic Shapes in a Basic Scene_
 
 ### Внешние Javascript включения (фрэймворк)
 
-Теперь мы звгрузим файлы нашего фрейм-ворка.  После CSS, (но все еще внутри ```<head>``` ), добавьте:
+Теперь мы загрузим файлы нашего фрейм-ворка.  После CSS, (но все еще внутри ```<head>``` ), добавьте:
 
 ```html
 <script src="babylon.js"></script>
@@ -59,8 +62,8 @@ _Two Basic Shapes in a Basic Scene_
 <script src="cannon.js"></script>  <!-- опционально, движок физики -->
 <!-- <script src="Oimo.js"></script>  новый физ. движок -->
 ```
-(если у вас еще нет этих файлов, вы можете найти их здесь: https://github.com/BabylonJS/Babylon.js, и здесь: http://handjs.codeplex.com/)
 
+(если у вас еще нет этих файлов, вы можете найти их здесь: https://github.com/BabylonJS/Babylon.js, и здесь: http://handjs.codeplex.com/)
 
 Затем, перейдем внутрь ```<body>``` нашей страницы... и добавим HTML5 canvas element, который и будет отрисовывать нашу сцену.
 
@@ -69,6 +72,7 @@ _Two Basic Shapes in a Basic Scene_
 ```
 
 Теперь, сделаем переход от HTML5 в Javascript.  Оставаясь в ```<body>``` ,  добавьте:
+
 ```javascript
 <script>
 
@@ -82,7 +86,7 @@ _Two Basic Shapes in a Basic Scene_
 После чего, нужно добавить код содания сцены.  Чтобы сохранить ваш код совместимым с Babylon.js Playground, мы рекомендуем чтобы вставка функции 'createScene' была именно здесь.  Помимо генерации объекта сцены Babylon Scene, createScene() это место где вы будете добавлять ваши базовые requirements для сцены:  Одна камера, один источник света, и один или более shapes/meshes.
 
 А теперь, добавим всю вашу функцию createScene на вашу web страницу:
- 
+
 ```javascript
   // Она начинается с создания функции которая будет 'call' сразу после сборки
   var createScene = function () {
@@ -101,7 +105,7 @@ _Two Basic Shapes in a Basic Scene_
 
     // присоединяем камеру к canvas
     camera.attachControl(canvas, false);
-        
+
     // создаем источник света, aiming 0,1,0 - to the sky.
     var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
 
@@ -125,13 +129,13 @@ _Two Basic Shapes in a Basic Scene_
 
 Вы узнаете больше о параметрах, свойствах lights, cameras, и встренных геометрических объектах... из уроков.  Главное знать что наша функция createScene выполняет все требования.  Она содержит:  
 
-*  объект Babylon Scene
-*  камеру которая должна быть присоединена
-*  источник света который был направлен
-*  сферу которая размещена в координатах 0,1,0 (мы переместили ее по +y)
-*  и плоскость земли которая размещена в координатах 0,0,0 (координаты по-умолчанию)
+* объект Babylon Scene
+* камеру которая должна быть присоединена
+* источник света который был направлен
+* сферу которая размещена в координатах 0,1,0 (мы переместили ее по +y)
+* и плоскость земли которая размещена в координатах 0,0,0 (координаты по-умолчанию)
 
-Есть еще три вещи, которые нужно добавить на web страницу.  Первое, 'call' на функцию createScene которую мы только что сделали. 
+Есть еще три вещи, которые нужно добавить на web страницу.  Первое, 'call' на функцию createScene которую мы только что сделали.
 Добавьте это:
 
 ```javascript
@@ -166,11 +170,12 @@ _Two Basic Shapes in a Basic Scene_
 </html>
 ```
 
-Сохраните файл (в той-же папке что и babylon.js, hand.js, и cannon.js) и откройте его вашим WebGL-ready браузером.  Вы должны увидеть new scene displayed in 3D on its canvas.
+Сохраните файл (в той-же папке что и babylon.js, hand.js, и cannon.js) и откройте его вашим WebGL-ready браузером.  Вы должны увидеть новую 3D сцену на ее canvas.
 
-A near-exact duplicate of the createScene function used in this tutorial... can be seen [**RIGHT HERE**](http://www.babylonjs.com/playground/#1GM4YQ) at the Babylon.js Playground.  You will also see the scene render LIVE, ONLINE!  Use the playground's 'Get .zip' choice if you want to download the entire index.html file used in this tutorial.
+Почти точный дубликат createScene function используемый в этом учебнике... можно увидеть [**ПРЯМО ЗДЕСЬ**](http://www.babylonjs.com/playground/#1GM4YQ) в Babylon.js Playground.  Вы также увидите рендер сцены LIVE, ONLINE!  Use the playground's 'Get .zip' выбор, если вы хотите загрузить весь index.html файл, используемый в этом учебнике.
 
 ## Возникли проблемы? ##
+
 Вот как должна выглядеть вся веб-страница:
 
 ```html
@@ -247,15 +252,16 @@ A near-exact duplicate of the createScene function used in this tutorial... can 
 
 ```
 
-## Moving On ##
+## Moving On
 
-From this point forward in the Basic Series tutorials, I will mostly talk about things that are contained in the createScene function (the part between the dashed lines). I will assume that you already know how to insert a createScene function into a Babylon.js HTML5 scene document (like the one above).
+С этого момента серии базовых уроков, В основном я расскажу о вещах, которые содержатся в функции createScene (часть между пунктирными линиями). Я предполагаю, что вы уже знаете, как вставить функцию createScene в документ сцены Babylon.js HTML5 (как выше).
 
-Try to memorize this web page layout, and see how the createScene function is at the heart of it. After you have spent some time using the Babylon.js Playground, you will see how createScene() is portable, and can be easily copied and pasted TO and FROM the playground editor window. This will allow others to help you with problems, and will also allow you to help others with their problems.
+Попробуйте запомнить этот макет веб-страницы, и посмотреть, как функция createScene находится в ее основе. После того, как вы потратили некоторое время на использование Babylon.js Playground, вы увидите, как createScene() переносится, и их можно легко скопировать и вставить ИЗ и В окно редактора. Это позволит другим помочь вам с проблемами, и также позволит вам помогать другим с их проблемами.
 
-## Next step ##
+## Next step
+
 ----
 
-Now you are ready to go further and learn how to create more elements like spheres, cylinders, boxes, etc.
+Теперь вы готовы пойти дальше и научиться создавать больше таких элементов, как spheres, cylinders, boxes, etc.
 
-Next in the Playpen Series - [**Basic elements**](http://doc.babylonjs.com/tutorials/Discover_Basic_Elements)
+Далее в Playpen Series - [**Basic elements**](http://doc.babylonjs.com/tutorials/Discover_Basic_Elements)

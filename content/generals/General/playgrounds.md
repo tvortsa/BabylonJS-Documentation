@@ -37,8 +37,3 @@ Please credit the author if you can!
 | [#ILRIF#0]( https://www.babylonjs-playground.com/#ILRIF#0) | Using mesh.lookAt | Stvsynrj |
 | [#EEOWP#7]( https://www.babylonjs-playground.com/#EEOWP#7) | Fog of war prototype | Unknown |
 | [#2DT16W#2]( https://www.babylonjs-playground.com/#2DT16W#2) | Shadow on transparent textures | Sebavan
-
-
-
-
-

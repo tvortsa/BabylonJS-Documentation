@@ -1,8 +1,8 @@
-# Babylon.js Off-Site Tutorials and Documents
+# Babylon.js Off-Site Tutorials и Documents
 
-## Introduction
+## Введение
 
-Hello, welcome to Babylon.js  - a webGL game developer's framework. Throughout the history of Babylon.js, coders and authors have written tutorials and documentation which is stored in places other than at our primary documentation site.  In *this* document, we will attempt to provide links-to and information-about those off-site documents.
+Привет, добро пожаловать Babylon.js  - webGL фреймворк для разработки игр. На протяжении всей истории Babylon.js, кодеры и авторы написали учебники и документацию, которые хранятся в местах, отличных от нашего основного сайта документации.  В *этом* документе, мы попытаемся предоставить ссылки и информацию об этих документах за пределами площадки.
 
 ## Deltakosh - http://eternalcoding.com
 

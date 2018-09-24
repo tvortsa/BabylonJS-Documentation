@@ -1,55 +1,59 @@
-# Introduction
+# Введение
 
-![Introduction](/img/extensions/Editor/editor.png)
+![Введение](/img/extensions/Editor/editor.png)
 
-For a quick and complete introduction with videos, you can read this post : [https://medium.com/babylon-js/welcome-to-the-babylon-js-editor-c08dccdcec07#.e1lm87d4g](https://medium.com/babylon-js/welcome-to-the-babylon-js-editor-c08dccdcec07#.e1lm87d4g)
+Для быстрого и полного ознакомления с видеороликами вы можете прочитать это сообщение : [https://medium.com/babylon-js/welcome-to-the-babylon-js-editor-c08dccdcec07#.e1lm87d4g](https://medium.com/babylon-js/welcome-to-the-babylon-js-editor-c08dccdcec07#.e1lm87d4g)
 
-The Babylon.js Editor is the final stage for artists and developers in scene designs.
-It provides several tools not provided (or supported by the exporters) by 3D modelers such as 3ds Max, Blender, etc.
+Babylon.js Editor является заключительным этапом для художников и разработчиков в сценах.
+Он не предоставляет нескольких инструментов (или поддерживается экспортерами) как в 3D редакторах таких как 3ds Max, Blender, etc.
 
-As an example, the Babylon.js Materials Library, which is not supported by 3D modelers, can be managed in the Babylon.js Editor.
+В качестве примера Babylon.js Materials Library, который не поддерживается 3D редакторами, поддерживается в Babylon.js Editor.
 
-In other words, this editor is a Web Application providing several tools to help artists (and developers) to debug, animate,
-configure and export Babylon.js scenes. In other words, this editor provides the optional final stage (in addition to the Babylon.js
-exporters of 3ds Max, Blender, Unity3D, etc.) to designers before they release their final scenes.
+Другими словами, этот редактор является Web Application предоставление нескольких инструментов, помогающих художникам (and developers) отлаживать, анимировать,конфигурировать и экспортировать сцены Babylon.js. Другими словами, этот editor обеспечивает необязательный заключительный этап (в добавок к Babylon.js экспортерами 3ds Max, Blender, Unity3D, etc.) дизайнерам, прежде чем они выпустят свои финальные сцены.
 
-The Babylon.js Editor can be found here: [http://editor.babylonjs.com/](http://editor.babylonjs.com/)
+Редактор Babylon.js Editor можно найти здесь: [http://editor.babylonjs.com/](http://editor.babylonjs.com/)
 
-The Github Repository can be found here: [https://github.com/BabylonJS/Editor](https://github.com/BabylonJS/Editor)
+Github Repository можно найти здесь: [https://github.com/BabylonJS/Editor](https://github.com/BabylonJS/Editor)
 
-# Available features
-## From v0.8
-* Create and edit particle systems
-* Create and edit animations
-* Create and edit lens flares systems
-* Save projects on OneDrive (Drop Box will come in future versions)
-* Deploy project template on OneDrive (Drop Box will come in future versions)
-* Cinematic Editor
-* Scene graph view
-* Create and edit post-process (soon exported in final .babylon scenes)
-* Create and edit render targets (soon exported in final .babylon scenes)
+## Доступные функции
+
+### С версии v0.8
+
+* Создание и редактирование систем частиц
+* Создание и редактирование анимаций
+* Создание и редактирование систем объективов
+* Сохранить проекты на OneDrive (Drop Box появятся в будущих версиях)
+* Развертывание шаблона проекта на OneDrive (Drop Box появятся в будущих версиях)
+* Cinematic редактор
+* Scene graph просмотр
+* Создание и редактирование постпроцесса (вскоре экспортируется в финал .babylon сцены)
+* Создание и редактирование целей рендеринга (вскоре экспортируется в финал .babylon сцены)
 
 ## From v0.9
-* Create and edit materials (complete Babylon.js Materials Library)
-* Import and setup textures to use with materials
-* Live preview of render targets (including shadow maps)
+
+* Создание и редактирование материалов (complete Babylon.js Materials Library)
+* Импорт и настройка текстур для использования с материалами
+* Предварительный просмотр рендеринга (including shadow maps)
 
 ## Coming in v1.0 (current)
-* Actions Builder support
+
+* поддержка Actions Builder
 
 ## Coming in v1.1
-* Setup and test physics simulations inlucing new updates of RaananW
-* Shader Materials Builder tool
 
-# Now, what is clearly exported?
-* Project configuration (FPS, animated at launch)
-* Particle systems
-* Lens flares
-* Post-processes (not yet serialized in .babylon files)
-* Animations
+* Установка и тестирование физических симуляций, включающих новые обновления RaananW
+* инструмент Shader Materials Builder
+
+## Теперь, что явно экспортируется?
+
+* Конфигурация проекта (FPS, animated at launch)
+* Системы частиц
+* Блики
+* Пост-процессы (not yet serialized in .babylon files)
+* Анимации
 * Skies
 * Render target textures
-* Reflection probes (not yet serialized in .babylon files)
-* Materials from Materials Library
-* Actions using Actions Builder
-* Custom metadatas used by extensions (Post-Process Builder, etc.)
+* Пробы отражений (not yet serialized in .babylon files)
+* Материалы из библиотеки материалов
+* Actions с помощью Actions Builder
+* Пользовательские метаданные, используемые расширениями (Post-Process Builder, etc.)

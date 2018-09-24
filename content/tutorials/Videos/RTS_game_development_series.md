@@ -1,12 +1,14 @@
-Hello, my name is Nikos and I run a YouTube channel catering for programmers.
+# RTS Игра на Babylon.js
 
-Have you ever wanted to build an awesome RTS game using Babylon.js?
-Have you ever wondered how all the units in a RTS game go about their tasks?
+Привет меня зовут Nikos и я запускаю YouTube канал для программистов.
 
-I invite you to come and build one and learn together with me as we build a unique RTS game called Density Wars!
-The game will involve you having to strategically position the units to beat your opponents. The units can link up their firepower when closer together, but you will have to balance local fire power against the overall progression of the battle.
+Вы когда-нибудь хотели создать потрясающую игру RTS, используя Babylon.js?
+Вы когда-нибудь задумывались над тем, как все подразделения в игре RTS выполняют свои задачи?
 
-Come and participate in this evolving RTS game series on YouTube by watching the trailer episode here:
+Я приглашаю вас прийти, построить и учиться вместе со мной, когда мы создадим уникальную игру RTS под названием Density Wars!
+В игре вам придется стратегически позиционировать единицы, чтобы победить ваших противников. Единицы могут связывать свою огневую мощь, когда все ближе, но вам придется балансировать местную огневую мощь против общей прогрессии битвы.
+
+Приходите и участвуйте в этой развивающейся серии игр RTS на YouTube, наблюдая за эпизодом трейлера здесь:
 
 [![First video in the series](https://img.youtube.com/vi/i7tdJpf6Pnc/0.jpg)](https://www.youtube.com/watch?v=i7tdJpf6Pnc&list=PLCrwuqjmVebK8M9DW_MNOxqn5ic6hF4ua&index=1 "Lets build an online RTS game together - JavaScript RTS game development series - Part 1 ")
 

@@ -1,26 +1,29 @@
 # Getting started
 
-## The User Interface
+## Пользовательский интерфейс
 
 ![UserInterface](/img/extensions/Editor/GettingStarted/UserInterface.png)
 
-Once you started the editor, you are able to use it with an empty scene (Here we have a scene for the demo).
+Когда вы запустите редактор, вы сможете использовать его с пустой сценой (Здесь у нас есть сцена для демонстрации).
 
 ### Workflow
 
-The workflow with the editor is simple:
-* On the right side, you’ll find the scene graph. You can quickly access to the meshes, lights, cameras, particle systems, sounds, render targets and lens flares systems.
+Рабочий процесс с редактором прост:
+
+* Справа вы найдете граф сцены. You can quickly access to the meshes, lights, cameras, particle systems, sounds, render targets and lens flares systems.
 * And, on the left side, you’ll find the edition tools that allow you to configure the objects previously selected in the scene graph. In the previous screenshot, the scene was selected and you are now able to edit the scene.
 * Finally, on the top, you’ll find the main toolbars to manage your project, add objects in the scene and play your cinematic/scene.
 
-### Load a Babylon.js scene
-To load a Babylon.js scene (.babylon), just drag’n’drop, like the Sandbox, your scene with textures and sounds on the canvas. That’s all :)
+### Загрузка Babylon.js сцен
+
+To load a Babylon.js scene (.babylon), просто drag'n'drop, как в Sandbox, ваша сцена с текстурами и звуками на canvas. Это все :)
 
 ![DragNDrop](/img/extensions/Editor/GettingStarted/DragNDrop.png)
 
-## Saving your projects
+## Сохранение ваших проектов
 
-Finally, let’s save your project and keep your configuration. There are 2 ways:
+Наконец, давайте сохраним ваш проект и сохраним вашу конфигурацию. Есть 2 способа:
+
 * Save manually to a file
 * Save projects directly into OneDrive (or DropBox in future versions)
 
