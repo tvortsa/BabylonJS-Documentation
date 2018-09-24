@@ -1,14 +1,14 @@
 ---
-PG_TITLE: 01. First Steps
+PG_TITLE: 01. Первые шаги
 ---
 
-# First Steps
+# Первые шаги
 
-Babylon.JS is a great way to code a 3D environment on the web using the HTML5 canvas element. 
+Babylon.JS это отличный способ кодировать 3D-среду в Интернете с помощью элемента холста HTML5. 
 
 ## The Playground
 
-This is the quickest and easiest way to make your own scene. Creating a 3D scene is easy, simply add a camera, lights and 3D shapes (meshes) and you are away. 
+Это самый быстрый и простой способ сделать свою собственную сцену. Creating a 3D scene is easy, simply add a camera, lights and 3D shapes (meshes) and you are away. 
 
 The [Playground](http://babylonjs-playground.com) is a web site which has everything you need to create 
 your own scene or edit an existing one. [More on the Playground](/features/Playground).
