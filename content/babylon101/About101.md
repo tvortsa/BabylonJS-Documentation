@@ -22,5 +22,5 @@ Other improvements to your scene environment are next. They include adding sky o
 
 # Next
 
-[Take the First Step](/babylon101/First)
+[Первый шаг](https://github.com/tvortsa/BabylonJS-Documentation/blob/russian/content/babylon101/First.md)
 
