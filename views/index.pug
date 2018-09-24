@@ -160,31 +160,31 @@ include includes/banner.pug
                     return scene;
                 }
         p.js.
-            Now that our <code>createScene()</code> function is ready, we need to call it:
+            Итак наша функция <code>createScene()</code> готова, теперь остается только вызвать ее:
         pre.js
             code.javascript.js.
                 var scene = createScene();
         p.js.
-            The next three javascript lines are very important, as they register a render loop to repeatedly render the
-            scene on the canvas:
+            Следующие три строки javascript очень важны, поскольку регистрируют цикл рендеринга на постоянно повторяющийся рендер
+            сцены на холсте:
         pre.js
             code.javascript.js.
                 engine.runRenderLoop(function() {
                     scene.render();
                 });
         p.js.
-            Lastly, you should implement a little canvas/window resize event handler, like this:
+            Наконец, вы должны реализовать немного canvas/window обработчик события изменения размера, примерно так:
         pre.js
             code.javascript.js.
                 window.addEventListener('resize', function() {
                     engine.resize();
                 });
         p.ts.
-            We will now write the necessary Typescript code to run our demonstration.
-            To begin with, create a new file <code>game.ts</code> with <code>Game</code>
-            class with a <code>constructor</code> and two methods, <code>createScene<c/ode>
-            and <code>animate</code>. And add a Event Listener for <code>DOMContentLoaded</code>
-            which will instantiate the <code>Game</code>, create the scene and start the animation :
+           йТеперь мы напишем необходимые Typescript код для запуска нашего демо.
+            Начнем с, создания нового файла <code>game.ts</code> с классом <code>Game</code>
+            конструктором <code>constructor</code> , и двумя методами <code>createScene<c/ode>
+            и <code>animate</code>. Добавим Event Listener для <code>DOMContentLoaded</code>
+            который будет инстанцировать <code>Game</code>, создавать сцену и запускать анимацию :
         pre.ts
             code.javascript.ts.
                 class Game {
@@ -199,19 +199,19 @@ include includes/banner.pug
                 }
 
                 window.addEventListener('DOMContentLoaded', () => {
-                  // Create the game using the 'renderCanvas'
+                  // Создаем game используя 'renderCanvas'
                   let game = new Game('renderCanvas');
 
-                  // Create the scene
+                  // Создаем сцену
                   game.createScene();
 
-                  // start animation
+                  // стартуем анимацию
                   game.animate();
                 });
         p.ts.
-            Next we'll add the instance variables needed for our game. These will
-            all be private so, following the Babylon js <a href="http://doc.babylonjs.com/generals/Approved_Naming_Conventions">
-            coding guidelines</a>, they'll all begin an underscore :
+            Затем мы добавим переменные экземпляра, необходимые для нашей игры. Все они
+            должны быть приватными, согласно кодингу в Babylon js <a href="http://doc.babylonjs.com/generals/Approved_Naming_Conventions">
+            coding guidelines</a>, они все начинаются с нижнего подчеркивания :
         pre.ts.
             code.javascript.ts.
                 class Game {
@@ -224,65 +224,64 @@ include includes/banner.pug
                     ...
                 }
         p.ts.
-            Now implement the <code>constructor</code>, its passed the name of the canvas element
-            and constructors have no return value. The code uses the <code>canvasElement</code>
-            parameter to create the canvas and then creates the engine :
+            Теперь реализуем <code>constructor</code>, ему передается имя элемента canvas
+            а конструкторы не имеют возвращаемых значений. Код использует параметр <code>canvasElement</code>
+            для создания canvas а затем создания engine :
         pre.ts.
             constructor(canvasElement : string) {
-              // Create canvas and engine
+              // Создание canvas и engine
               this._canvas = <HTMLCanvasElement>document.getElementById(canvasElement);
               this._engine = new BABYLON.Engine(this._canvas, true);
             }
         p.ts.
-            Then implement <code>createScene</code>, which takes no parameters and returns nothing
-            hence its type is <code>void</code>. The code comments detail its actions.
+            Затем реализуем <code>createScene</code>, которые не принимает параметров и ничего не возвращает
+            поэтому его вид <code>void</code>. В комментариях кода подробно описаны его действия.
         pre.ts.
             createScene() : void {
-               // create a basic BJS Scene object
+               // создаем базовый объект сцены BJS
                this._scene = new BABYLON.Scene(this._engine);
 
-               // create a FreeCamera, and set its position to (x:0, y:5, z:-10)
+               // создаем FreeCamera, и задаем ей позицию (x:0, y:5, z:-10)
                this._camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5,-10), this._scene);
 
-               // target the camera to scene origin
+               // нацеливаем камеру на scene origin
                this._camera.setTarget(BABYLON.Vector3.Zero());
 
-               // attach the camera to the canvas
+               // присоединяем камеру к canvas
                this._camera.attachControl(this._canvas, false);
 
-               // create a basic light, aiming 0,1,0 - meaning, to the sky
+               // создаем basic light, aiming 0,1,0 - meaning, to the sky
                this._light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0,1,0), this._scene);
 
-               // create a built-in "sphere" shape; with 16 segments and diameter of 2
+               // создаем встроенную форму "sphere"; с 16 сегментами и диаметром 2
                let sphere = BABYLON.MeshBuilder.CreateSphere('sphere1',
                                         {segments: 16, diameter: 2}, this._scene);
 
-               // move the sphere upward 1/2 of its height
+               // перемещаем сферу вверх на 1/2 ее высоты
                sphere.position.y = 1;
 
-               // create a built-in "ground" shape
+               // создаем встроенную форму "ground"
                let ground = BABYLON.MeshBuilder.CreateGround('ground1',
                                         {width: 6, height: 6, subdivisions: 2}, this._scene);
             }
         p.ts.
-            Next we'll implement <code>animate</code>, which also takes no
-            parameters and returns nothing. This routine starts the rendering
-            loop and adds the resize Event Listener :
+            ЗАтем реализуем <code>animate</code>, который также ничего не принимает и не возвращает.
+            Эта процедура запускает цикл рендеринга и добавляет слушатель события изменения размера :
         pre.ts.
             animate() : void {
-              // run the render loop
+              // запуск цикла рендера
               this._engine.runRenderLoop(() => {
                   this._scene.render();
               });
 
-              // the canvas/window resize event handler
+              // обработчик события изменения размера canvas/окна
               window.addEventListener('resize', () => {
                   this._engine.resize();
               });
             }
         p.ts.
-            Finally, save the <code>game.ts</code> file and add the reference to <code>game.js</code>,
-            which will be generated from <code>game.ts</code>, to your index.html :
+            Наконец, сохраняем файл <code>game.ts</code> и добавляем ссылку на <code>game.js</code>,
+            которая будет сгенерирована из <code>game.ts</code>, в ваш index.html :
         pre.ts.
             code.html.
                 &lt;!DOCTYPE html&gt;
@@ -292,7 +291,7 @@ include includes/banner.pug
                 &lt;/head&gt;
                 &lt;/html&gt;
         p.ts.
-            Your Awesome Project directory should now contain:
+            Папка вашего проекта теперь должна содержать:
         pre.ts
             code.github.ts.
                 yourAwesomeProject
@@ -301,12 +300,12 @@ include includes/banner.pug
                     |- babylon.2.3.js
                     |- babylon.2.3.d.ts
         p.ts.
-            Now compile <code>game.ts</code> which will output <code>game.js</code>:
+            Компилируем <code>game.ts</code> который должен вывести <code>game.js</code>:
         pre.ts
             code.github.ts.
                 tsc game.ts babylon.2.3.d.ts
         p.ts.
-            You should now see <code>game.js</code> in Your Awesome Project directory:
+            Теперь вы должны видеть <code>game.js</code> в аппке вашего проекта:
         pre.ts
             code.github.ts.
                 yourAwesomeProject
@@ -316,8 +315,8 @@ include includes/banner.pug
                     |- babylon.2.3.js
                     |- babylon.2.3.d.ts
         p.
-            And that's it! Save your files and open <code>index.html</code> with your favorite web browser. You should see the
-            following:
+            Это все! Сохраните ваши файлы и откройте <code>index.html</code> в браузере. Вы должны увидеть следующее:
+            
         div.bigimage
             a(href="http://www.babylonjs-playground.com/#12S23Y", target="_blank")
                 img(src='img/getting_started_demo.jpg').demo-img
@@ -355,30 +354,30 @@ include includes/banner.pug
                     &lt;canvas id="renderCanvas"&gt;&lt;/canvas&gt;
                     &lt;script&gt;
                         window.addEventListener('DOMContentLoaded', function(){
-                            // get the canvas DOM element
+                            // получаем DOM элемент canvas
                             var canvas = document.getElementById('renderCanvas');
 
-                            // load the 3D engine
+                            // загружаем 3D engine
                             var engine = new BABYLON.Engine(canvas, true);
 
-                            // createScene function that creates and return the scene
+                            // createScene функция которая создает и возвращает scene
                             var createScene = function(){
-                                // create a basic BJS Scene object
+                                // создаем базовый объект BJS Scene
                                 var scene = new BABYLON.Scene(engine);
 
-                                // create a FreeCamera, and set its position to (x:0, y:5, z:-10)
+                                // создаем FreeCamera, и задаем ее положение в (x:0, y:5, z:-10)
                                 var camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5,-10), scene);
 
-                                // target the camera to scene origin
+                                // нацеливаем камеру на scene origin
                                 camera.setTarget(BABYLON.Vector3.Zero());
 
-                                // attach the camera to the canvas
+                                // присоединяем камеру к canvas
                                 camera.attachControl(canvas, false);
 
-                                // create a basic light, aiming 0,1,0 - meaning, to the sky
+                                // создаем базовый источник света, aiming 0,1,0 - meaning, to the sky
                                 var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0,1,0), scene);
 
-                                // create a built-in "sphere" shape; its constructor takes 5 params: name, width, depth, subdivisions, scene
+                                // создаем встроенную форму "sphere"; ее конструктор принимает 5 параметров: name, width, depth, subdivisions, scene
                                 var sphere = BABYLON.Mesh.CreateSphere('sphere1', 16, 2, scene);
 
                                 // move the sphere upward 1/2 of its height
@@ -437,7 +436,7 @@ include includes/banner.pug
                 &lt;/body&gt;
                 &lt;/html&gt;
         p.ts.
-            Then, feel free to copy-paste the following code in your <code>game.ts</code> file:
+            Свободно можете скопировать следующий код в ваш файл <code>game.ts</code>:
         pre.ts.
             class Game {
               private _canvas: HTMLCanvasElement;
@@ -447,7 +446,7 @@ include includes/banner.pug
               private _light: BABYLON.Light;
 
               constructor(canvasElement : string) {
-                // Create canvas and engine
+                // создаем canvas и engine
                 this._canvas = <HTMLCanvasElement>document.getElementById(canvasElement);
                 this._engine = new BABYLON.Engine(this._canvas, true);
               }
