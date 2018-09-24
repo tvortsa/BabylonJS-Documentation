@@ -2,9 +2,12 @@
 
     $(document).ready(function () {
 
-        if(localStorage.getItem('docBabylon_lastSearch') != false
-        && localStorage.getItem('docBabylon_lastSearch') != null) {
-            document.getElementById("lastSearch").innerHTML = 'Your last search : <a href="http://doc.babylonjs.com/playground?code='
+        if (localStorage.getItem('docBabylon_lastSearch') != false
+            && localStorage.getItem('docBabylon_lastSearch') != null
+            && localStorage.getItem('docBabylon_lastSearch_type') != false
+            && localStorage.getItem('docBabylon_lastSearch_type') != null) {
+            document.getElementById('lastSearch').innerHTML = 'Your last search : <a href="http://doc.babylonjs.com/playground?'
+                + localStorage.getItem('docBabylon_lastSearch_type') + '='
                 + localStorage.getItem('docBabylon_lastSearch') + '">' + localStorage.getItem('docBabylon_lastSearch') + '</a>';
         }
 
@@ -12,7 +15,7 @@
     });
 
     function runQuery() {
-        var query = getQueryVariable('q');
+        var query = getQueryVariable('bjsq');
         var tagsQuery = getQueryVariable('tag');
         var codeQuery = getQueryVariable('code');
         var strQuery = decodeURIComponent(query).split('+').join(' ');
@@ -26,16 +29,23 @@
         if (strQuery != 'false') {
             queryType = 'name/';
             finalQuery = strQuery;
+            localStorage.setItem("docBabylon_lastSearch_type", "name");
             localStorage.setItem("docBabylon_lastSearch", strQuery);
+            try {document.getElementsByName('bjsq')[1].value = strQuery;} catch(e) {}
+            
         }
         else if (strTags != 'false') {
             queryType = 'tags/';
             finalQuery = strTags;
+            localStorage.setItem("docBabylon_lastSearch_type", "tags");
             localStorage.setItem("docBabylon_lastSearch", strTags);
+            try {document.getElementsByName('tag')[0].value = strTags;} catch(e) {}
         }
         else if (strCode != 'false') {
             queryType = 'code/';
+            localStorage.setItem("docBabylon_lastSearch_type", "code");
             localStorage.setItem("docBabylon_lastSearch", strCode);
+            document.getElementsByName('code')[0].value = strCode;
             finalQuery = strCode.split(' ').join(' AND ');;
         }
         if (!query && !tagsQuery && !codeQuery) {
@@ -72,8 +82,8 @@
             //If we collect data, show our number of results and buttons to change pages
             var pageChange = '';
             if (query) {
-                html = findQuery(query, strQuery, data, page, pageChange, 'q')[0];
-                pageChange = findQuery(query, strQuery, data, page, pageChange, 'q')[1];
+                html = findQuery(query, strQuery, data, page, pageChange, 'bjsq')[0];
+                pageChange = findQuery(query, strQuery, data, page, pageChange, 'bjsq')[1];
             }
             else if (tagsQuery) {
                 html = findQuery(tagsQuery, strTags, data, page, pageChange, 'tag')[0];
@@ -96,19 +106,24 @@
                     //Code research
                     if (codeQuery) {
 
-                        // Create html div with Code research
-                        var codeToDisplay = JSON.parse(s.jsonPayload);
-                        var type = '';
-                        if (codeToDisplay.code) {
-                            type = '';
-                            codeToDisplay = codeToDisplay.code;
-                        } else {
-                            // CYOS
-                            type = 'cyos';
-                            codeToDisplay = codeToDisplay.vertexShader + "\n" + codeToDisplay.pixelShader;
-                        }
+                        try {
+                            // Create html div with Code research
+                            var codeToDisplay = JSON.parse(s.jsonPayload);
+                            var type = '';
+                            if (codeToDisplay.code) {
+                                type = '';
+                                codeToDisplay = codeToDisplay.code;
+                            } else {
+                                // CYOS
+                                type = 'cyos';
+                                codeToDisplay = codeToDisplay.vertexShader + "\n" + codeToDisplay.pixelShader;
+                            }
 
-                        html += createHTMLResultDiv(s, id, codeToDisplay, strCode, type);
+                            html += createHTMLResultDiv(s, id, codeToDisplay, strCode, type);
+                        }
+                        catch(ex) {
+                            console.log("A parsing error occured. Please, report this issue on the BabylonJS documentation github with the searched term. Thanks a lot!");
+                        }
 
                     }
 
@@ -211,7 +226,7 @@
     var updateLinks = function () {
 
         // retrieve current page number
-        var searchTerm = getQueryVariable('q');
+        var searchTerm = getQueryVariable('bjsq');
         var page = getQueryVariable('page') || '1';
         var max = getQueryVariable('max') || '25';
         var bf = getQueryVariable('bf') || 'all';
@@ -441,27 +456,30 @@
             result = result.concat(words.slice(index, stopIndex));
             originalText = '<br>' + result.join(' '); // join back
 
-            if(originalText.length < 500)
+            if (originalText.length < 500)
                 return originalText;
-            else{
+            else {
                 // String before the word
-                var wordsString  = "";
+                var wordsString = "";
                 wordsString = wordsString.concat(words.slice(startIndex, index));
 
                 // start index
                 var begIndex = wordsString.length - 250;
-                if(begIndex < 0){
+                if (begIndex < 0) {
                     begIndex = 0;
                 }
 
                 // Size of the substring to extract
                 var size = 500;
-                if(size + begIndex  > originalText.length){
+                var lastSpanIndex = originalText.lastIndexOf("</span>"); // Avoid to cut a span and end with weird html things.
+                if(lastSpanIndex > 500)
+                    size = lastSpanIndex + 8;
+                if (size + begIndex > originalText.length) {
                     size = originalText.length - begIndex;
                 }
-                
+
                 // if more than 500 characters, only return the substring around the word 
-                return  originalText.substr(begIndex, size);
+                return originalText.substr(begIndex, size);
             }
         }
         else return "";

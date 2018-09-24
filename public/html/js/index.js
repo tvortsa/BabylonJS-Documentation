@@ -10,7 +10,7 @@
             var divSearchBarMobile =
                 $('<div>', {
                     class: 'searchbar-mobile searchbar',
-                    html: '<form method="get" action="/search"><input type="text" name="q" placeholder="Search..."/>' +
+                    html: '<form method="get" action="/search"><input type="text" name="bjsq" placeholder="Search..."/>' +
                     '<button type="submit"><i class="fa fa-search"></i></button></form>'
                 });
 
@@ -24,28 +24,36 @@
                     html: '<i class="fa fa-file-text-o"></i>What\'s new?'
                 }),
                 $('<a>', {
-                    href: '/generals',
-                    html: '<i class="fa fa-book"></i>Generals'
+                    href: '/babylon101',
+                    html: '<i class="fa fa-book"></i>Babylon 101'
+                }), 
+                $('<a>', {
+                    href: '/examples',
+                    html: '<i class="fa fa-slideshare"></i>Examples'
+                }),                 
+                $('<a>', {
+                    href: '/How_To',
+                    html: '<i class="fa fa-cogs"></i>How To...'
                 }),
                 $('<a>', {
-                    href: '/tutorials',
-                    html: '<i class="fa fa-cogs"></i>Tutorials'
-                }),
-                $('<a>', {
-                    href: '/overviews',
-                    html: '<i class="fa fa-book"></i>Overviews'
+                    href: '/features',
+                    html: '<i class="fa fa-book"></i>Features'
                 }),                     
                 $('<a>', {
-                    href: '/exporters',
-                    html: '<i class="fa fa-rocket"></i>Exporters'
+                    href: '/resources',
+                    html: '<i class="fa fa-rocket"></i>Resources'
                 }),
                 $('<a>', {
                     href: '/extensions',
                     html: '<i class="fa fa-wrench"></i>Extensions'
                 }),
                 $('<a>', {
-                    href: '/classes',
-                    html: '<i class="fa fa-files-o"></i>Classes'
+                    href: '/snippets',
+                    html: '<i class="fa fa-book"></i>Snippets'
+                }),
+                $('<a>', {
+                    href: '/api',
+                    html: '<i class="fa fa-files-o"></i>API'
                 }),
                 $('<a>', {
                     href: '/playground',
@@ -74,11 +82,6 @@
                     target: '_blank',
                     html: '<i class="fa fa-html5"></i>Forum'
                 }),
-                $('<a>', {
-                    href: 'http://babylonjsguide.github.io/',
-                    target: '_blank',
-                    html: '<i class="fa fa-html5"></i>Guide'
-                })
             ];
 
             $('#menu').append(divSearchBarMobile)
