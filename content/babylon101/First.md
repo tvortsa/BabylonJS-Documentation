@@ -8,12 +8,11 @@ Babylon.JS это отличный способ кодировать 3D-сред
 
 ## The Playground
 
-Это самый быстрый и простой способ сделать свою собственную сцену. Creating a 3D scene is easy, simply add a camera, lights and 3D shapes (meshes) and you are away. 
+Это самый быстрый и простой способ сделать свою собственную сцену. Создание 3D-сцены легко, просто добавьте камеру, источники света и 3D-фигуры (сетки), и все. 
 
-The [Playground](http://babylonjs-playground.com) is a web site which has everything you need to create 
-your own scene or edit an existing one. [More on the Playground](/features/Playground).
+[Playground](http://babylonjs-playground.com) это веб-сайт, на котором есть все необходимое для создания вашей собственной сцены или редактирования существующей. [больше о Playground](/features/Playground).
 
-A template for creating a scene within the playground is:
+Шаблон для создания сцены в playground:
 
 ```javascript
 var createScene = function () {
