@@ -17,18 +17,18 @@ Babylon.JS это отличный способ кодировать 3D-сред
 ```javascript
 var createScene = function () {
 
-    // Create the scene space
+    // Создаем пространство сцены
     var scene = new BABYLON.Scene(engine);
 
-    // Add a camera to the scene and attach it to the canvas
+    // Добавляем камеру и присоединяем ее к canvas
     var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 2, BABYLON.Vector3.Zero(), scene);
     camera.attachControl(canvas, true);
 
-    // Add lights to the scene
+    // Добавляем свет к сцене
     var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 0), scene);
     var light2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(0, 1, -1), scene);
 
-    // This is where you create and manipulate meshes
+    // Здесь мы создаем и манипулируем мешами
     var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {}, scene);
 
     return scene;
@@ -36,11 +36,11 @@ var createScene = function () {
 };
 ```
 
-Everything else you need is taken care of within the Playground.
+обо всем остальном позаботится Playground.
 
 * [Playground example of above code](http://www.babylonjs-playground.com/#WG9OY#1)
 
-## Your Own HTML
+## Ваш собственный HTML
 
 When writing your own HTML you just need to embed the createScene function into an HTML page structure with a &lt; script &gt; tag along with a few other items. You will need to load the BabylonJS javascript code. Also for use on tablets and mobiles BabylonJS uses pointer events rather than mouse events and so the PEP event system needs to be loaded as well. 
 
@@ -87,10 +87,10 @@ Finally, add code to call the scene. This enables the engine to continually rend
         var canvas = document.getElementById("renderCanvas"); // Get the canvas element 
         var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
 
-        /******* Add the create scene function ******/
+        /******* Добавляем функцию создания сцены ******/
         var createScene = function () {
 
-            // Create the scene space
+            // Создаем пространство сцены
             var scene = new BABYLON.Scene(engine);
 
             // Add a camera to the scene and attach it to the canvas
@@ -106,16 +106,16 @@ Finally, add code to call the scene. This enables the engine to continually rend
 
             return scene;
         };
-        /******* End of the create scene function ******/	
+        /******* Конец функции создания сцены ******/	
 
-        var scene = createScene(); //Call the createScene function
+        var scene = createScene(); //Вызываем функцию createScene
 
-        // Register a render loop to repeatedly render the scene
+        // Регистрируем цикл рендеринга для повторяющегося рендеринга сцены
         engine.runRenderLoop(function () { 
                 scene.render();
         });
 
-        // Watch for browser/canvas resize events
+        // Следим за событиями изменения размера окна браузера/канваса
         window.addEventListener("resize", function () { 
                 engine.resize();
         });
@@ -126,17 +126,17 @@ Finally, add code to call the scene. This enables the engine to continually rend
 </html>
 ```
 
-## Notes
+## Заметки
 
-1. The examples above use the newer MeshBuilder method for creating shapes where variables for the shape are set within the options object parameter and has some advantages over the older form of BABYLON.Mesh.Create.... which uses a parameter list for the shape variables. The majority of Playgrounds use the older method as many were created before MeshBuilder existed. 
+1. Приведенные выше примеры используют более новые методы MeshBuilder для создания форм где переменные для формы задаются в the options object parameter и имеют ряд преимуществ над старым BABYLON.Mesh.Create.... который использует список параметров для переменных формы. Большая часть Playgrounds использует более старый метод, поскольку многие из них были созданы до появления MeshBuilder. 
 
 2. The use of PEP for pointer events is more recent advice, older advice was to use a system called hand.js. Both work, although hand.js is no longer maintained. You may still find references to hand.js in the documentation. 
 
-# Next Step
+# Следующий шаг
 
 Now you are ready to go further and learn how to create more shapes like spheres, cylinders, boxes, etc. by visiting [Set Shapes](/babylon101/Discover_Basic_Elements)
 
-# Further Reading External
+# Дополнительная литература
 [BabylonJS Forum](http://www.html5gamedevs.com/forum/16-babylonjs)  
 [PEP and hand.js](http://www.html5gamedevs.com/topic/22474-how-does-babylonjs-get-pointer-events-working/#comment-127993)  
 
