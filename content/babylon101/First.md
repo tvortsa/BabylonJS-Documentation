@@ -42,11 +42,11 @@ var createScene = function () {
 
 ## Ваш собственный HTML
 
-When writing your own HTML you just need to embed the createScene function into an HTML page structure with a &lt; script &gt; tag along with a few other items. You will need to load the BabylonJS javascript code. Also for use on tablets and mobiles BabylonJS uses pointer events rather than mouse events and so the PEP event system needs to be loaded as well. 
+При написании своего HTML вам просто нужно вставить функцию createScene на страницу HTML в тегах &lt; script &gt; наряду с несколькими другими элементами. Вам нужно будет загрузить BabylonJS javascript код. Также для использования на планшетах и ​​мобильных телефонах BabylonJS использует события указателя, а не события мыши, поэтому необходимо также загрузить систему событий PEP. 
 
-In addition a canvas element will have to be added to the body as this is where the 3D scene will be rendered and a reference variable *canvas* added to it in the code. You also need to generate the BabylonJS engine before the function for creating the scene.
+Кроме того, элемент canvas должен быть добавлен к body, так как это то где 3D сцена будет визуализирована и ссылка на переменную *canvas* добавляется в код. Вам также необходимо сгенерировать BabylonJS engine перед функцией для создания scene.
 
-Finally, add code to call the scene. This enables the engine to continually render the scene in a loop and to resize it if the browser is ever resized.
+Наконец, добавьте код для вызова scene. Это позволит engine постоянно отображать сцену в цикле и изменять ее размер, если размер браузера был изменен.
 
 ### HTML template
 
@@ -93,15 +93,15 @@ Finally, add code to call the scene. This enables the engine to continually rend
             // Создаем пространство сцены
             var scene = new BABYLON.Scene(engine);
 
-            // Add a camera to the scene and attach it to the canvas
+            // Добавьте камеру на сцену и прикрепите ее к холсту
             var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 2, new BABYLON.Vector3(0,0,5), scene);
             camera.attachControl(canvas, true);
 
-            // Add lights to the scene
+            // Добавить свет на сцену
             var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 0), scene);
             var light2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(0, 1, -1), scene);
 
-            // Add and manipulate meshes in the scene
+            // Добавить и управлять сетками на сцене
             var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter:2}, scene);
 
             return scene;
@@ -134,7 +134,7 @@ Finally, add code to call the scene. This enables the engine to continually rend
 
 # Следующий шаг
 
-Now you are ready to go further and learn how to create more shapes like spheres, cylinders, boxes, etc. by visiting [Set Shapes](/babylon101/Discover_Basic_Elements)
+Теперь вы готовы пойти дальше и научиться создавать больше фигур, таких как spheres, cylinders, boxes, etc. by visiting [Set Shapes](/babylon101/Discover_Basic_Elements)
 
 # Дополнительная литература
 [BabylonJS Forum](http://www.html5gamedevs.com/forum/16-babylonjs)  
